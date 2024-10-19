@@ -142,6 +142,3 @@ func SetMovementSpeed(state : String):
 func _on_animation_player_animation_started(anim_name):
 	if anim_name == "Crouching":
 		isCrouching = !isCrouching
-
-func testGit():
-	pass
