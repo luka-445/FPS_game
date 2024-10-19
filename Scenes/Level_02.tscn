@@ -1,0 +1,86 @@
+[gd_scene load_steps=16 format=3 uid="uid://c1f7g4ftguud7"]
+
+[ext_resource type="Texture2D" uid="uid://pjjhl8rfd0jx" path="res://Assets/Materials/kenney_prototype_textures/dark/texture_01.png" id="1_1wedy"]
+[ext_resource type="Texture2D" uid="uid://d1b1d2rxn27t2" path="res://Assets/Materials/kenney_prototype_textures/purple/texture_01.png" id="2_ebbxd"]
+[ext_resource type="Texture2D" uid="uid://da8fsltk6ipd8" path="res://Assets/Materials/kenney_prototype_textures/green/texture_01.png" id="3_2wx1y"]
+[ext_resource type="PackedScene" uid="uid://sxjs4ihx81l" path="res://Scenes/player_controller.tscn" id="4_5srb7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oq8h8"]
+sky_top_color = Color(0, 0.452002, 0.80851, 1)
+sky_horizon_color = Color(0.213569, 0.706826, 0.933253, 1)
+ground_bottom_color = Color(0.413686, 0.5272, 0.696794, 1)
+ground_horizon_color = Color(0.341499, 0.675306, 1, 1)
+
+[sub_resource type="Sky" id="Sky_jm3pd"]
+sky_material = SubResource("ProceduralSkyMaterial_oq8h8")
+
+[sub_resource type="Environment" id="Environment_ltab1"]
+background_mode = 2
+sky = SubResource("Sky_jm3pd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ob2j"]
+albedo_texture = ExtResource("1_1wedy")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_buyci"]
+material = SubResource("StandardMaterial3D_1ob2j")
+size = Vector3(21, 0, 21)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_glvqo"]
+size = Vector3(21, 0, 21)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqu75"]
+albedo_texture = ExtResource("2_ebbxd")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4408"]
+material = SubResource("StandardMaterial3D_tqu75")
+size = Vector3(6, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6i0ih"]
+size = Vector3(6, 0.5, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6igk"]
+albedo_texture = ExtResource("3_2wx1y")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5r2bf"]
+material = SubResource("StandardMaterial3D_k6igk")
+size = Vector3(6, 0.5, 4)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ltab1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.471104, 0.882078, 0, -0.882078, -0.471104, 0, 7.0701, -12.0869)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_buyci")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_glvqo")
+
+[node name="HighPlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.70836, 2, -0.335)
+mesh = SubResource("BoxMesh_g4408")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HighPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HighPlatform/StaticBody3D"]
+shape = SubResource("BoxShape3D_6i0ih")
+
+[node name="LowPlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32155, 1.5, -0.335)
+mesh = SubResource("BoxMesh_5r2bf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LowPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LowPlatform/StaticBody3D"]
+shape = SubResource("BoxShape3D_6i0ih")
+
+[node name="PlayerController" parent="." instance=ExtResource("4_5srb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527422, 4.23831)
