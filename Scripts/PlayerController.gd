@@ -1,9 +1,12 @@
 extends CharacterBody3D
 
+@export var ACCELERATION : float = 0.1
+@export var DECELERATION : float = 0.25
 @export var SPEED_DEFAULT : float = 5.0
 @export var SPEED_CROUCHING : float =  2.0
+@export var SPEED_SPRINT : float = 7.0
 @export var JUMP_VELOCITY : float = 4.5
-@export var MOUSE_SENSITIVITY : float = 0.5
+@export var MOUSE_SENSITIVITY : float = 0.7
 @export var TOGGLE_CROUCH : bool = true
 @export_range(5, 10, 0.1) var CROUCH_SPEED : float = 7.0
 @export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
@@ -21,6 +24,7 @@ var cameraRotation : Vector3
 var speed : float
 
 var isCrouching : bool = false
+var isFullscreen : bool = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -28,6 +32,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
+	Global.player = self
 	# Set mouse input to capture in screen
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
@@ -38,6 +43,10 @@ func _ready():
 	speed = SPEED_DEFAULT
 	
 func _input(event):
+	if event.is_action_pressed("fullScreen") and isFullscreen == false:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		isFullscreen != isFullscreen
+	
 	# If Exit key (mapped to escape) is pressed, quit out.
 	if event.is_action_pressed("exit"):
 		get_tree().quit()
@@ -78,8 +87,9 @@ func UpdateCamera(delta):
 	# Tilt Camera up and down.
 	global_transform.basis = Basis.from_euler(playerRotation)
 	
-	tiltInput = 0
-	rotationInput = 0
+	rotationInput = 0.0
+	tiltInput = 0.0
+	
 	
 func _physics_process(delta):
 	
@@ -101,11 +111,11 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("moveLeft", "moveRight", "moveForward", "moveBackward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = lerp(velocity.x, direction.x * speed, ACCELERATION)
+		velocity.z = lerp(velocity.z, direction.z * speed, ACCELERATION)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, DECELERATION)
+		velocity.z = move_toward(velocity.z, 0, DECELERATION)
 
 	move_and_slide()
 
