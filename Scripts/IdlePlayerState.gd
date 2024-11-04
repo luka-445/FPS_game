@@ -1,10 +1,31 @@
-class_name IdlePlayerState extends State
+class_name IdlePlayerState 
 
-@export var ANIMATION : AnimationPlayer
+extends PlayerMovementState
+
+@export var SPEED : float = 5.0
+@export var ACCELERATION : float = 0.1
+@export var DECELERATION : float = 0.25
 
 func enter() -> void:
-	ANIMATION.pause()
+	if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
+		await ANIMATION.animation_finished
+		ANIMATION.pause()
+	else:
+		ANIMATION.pause()
 	
-func update(detla):
-	if Global.player.velocity.length() > 0.0 and Global.player.is_on_floor():
+func update(delta):
+	PLAYER.UpdateGravity(delta)
+	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()
+	
+	if Input.is_action_just_pressed("crouch") and PLAYER.is_on_floor():
+		transition.emit("CrouchingPlayerState")
+
+	if PLAYER.velocity.length() > 0.0 and PLAYER.is_on_floor():
 		transition.emit("WalkingPlayerState")
+	
+	if Input.is_action_just_pressed("jump") and PLAYER.is_on_floor():
+		transition.emit("JumpingPlayerState")
+	
+	if PLAYER.velocity.y > -3.0 and !PLAYER.is_on_floor():
+		transition.emit("FallingPlayerState")

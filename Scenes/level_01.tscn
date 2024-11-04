@@ -1,22 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cp2ljnb1yi648"]
+[gd_scene load_steps=15 format=3 uid="uid://cp2ljnb1yi648"]
 
 [ext_resource type="Texture2D" uid="uid://pjjhl8rfd0jx" path="res://Assets/Materials/kenney_prototype_textures/dark/texture_01.png" id="1_fjdfp"]
+[ext_resource type="Environment" uid="uid://t4ybg7p0lmj8" path="res://Assets/World Environments/testEnvironment.tres" id="1_r4fse"]
 [ext_resource type="Texture2D" uid="uid://d1b1d2rxn27t2" path="res://Assets/Materials/kenney_prototype_textures/purple/texture_01.png" id="2_v8285"]
 [ext_resource type="Texture2D" uid="uid://chuxdtchk7qll" path="res://Assets/Materials/kenney_prototype_textures/red/texture_01.png" id="3_lebfs"]
-[ext_resource type="PackedScene" uid="uid://sxjs4ihx81l" path="res://Scenes/player_controller.tscn" id="4_vhl6t"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p8odk"]
-sky_top_color = Color(0, 0.452002, 0.80851, 1)
-sky_horizon_color = Color(0.213569, 0.706826, 0.933253, 1)
-ground_bottom_color = Color(0.413686, 0.5272, 0.696794, 1)
-ground_horizon_color = Color(0.341499, 0.675306, 1, 1)
-
-[sub_resource type="Sky" id="Sky_tcten"]
-sky_material = SubResource("ProceduralSkyMaterial_p8odk")
-
-[sub_resource type="Environment" id="Environment_uvawj"]
-background_mode = 2
-sky = SubResource("Sky_tcten")
+[ext_resource type="PackedScene" uid="uid://sxjs4ihx81l" path="res://Controllers/player_controller.tscn" id="4_vhl6t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7hwa"]
 albedo_texture = ExtResource("1_fjdfp")
@@ -52,7 +40,7 @@ size = Vector3(2, 0.7, 1)
 [node name="Level01" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_uvawj")
+environment = ExtResource("1_r4fse")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.471104, 0.882078, 0, -0.882078, -0.471104, 0, 7.0701, -12.0869)

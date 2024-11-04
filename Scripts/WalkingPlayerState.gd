@@ -1,21 +1,46 @@
-class_name WalkingPlayerState extends State
+class_name WalkingPlayerState 
 
-@export var ANIMATION : AnimationPlayer
-@export var TOP_ANIMATION_SPEED : float = 2.2
+extends PlayerMovementState
+
+@export var SPEED : float = 5.0
+@export var ACCELERATION : float = 0.1
+@export var DECELERATION : float = 0.25
+@export var TOP_ANIMATION_SPEED : float = 1.5
 
 func enter() -> void:
-	ANIMATION.play("Walking", -1.0, 1.0)
-	Global.player.speed = Global.player.SPEED_DEFAULT
+	if ANIMATION.is_playing() and ANIMATION.current_animation == "JumpEnd":
+		await ANIMATION.animation_finished
+		ANIMATION.play("Walking", -1.0, 1.0)
+	else:
+		ANIMATION.play("Walking", -1.0, 1.0)
+	
+
+func exit() -> void:
+	ANIMATION.speed_scale = 1.0
 
 func update(delta):
-	SetAnimationSpeed(Global.player.velocity.length())
-	if Global.player.velocity.length() == 0:
+	PLAYER.UpdateGravity(delta)
+	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()
+	
+	SetAnimationSpeed(PLAYER.velocity.length())
+	
+		
+	if Input.is_action_pressed("crouch") and PLAYER.is_on_floor():
+		transition.emit("CrouchingPlayerState")
+		
+	if Input.is_action_pressed("sprint") and PLAYER.is_on_floor():
+		transition.emit("SprintingPlayerState")
+	
+	if PLAYER.velocity.length() == 0.0:
 		transition.emit("IdlePlayerState")
+	
+	if Input.is_action_just_pressed("jump") and PLAYER.is_on_floor():
+		transition.emit("JumpingPlayerState")
+	
+	if PLAYER.velocity.y > -3.0 and !PLAYER.is_on_floor():
+		transition.emit("FallingPlayerState")
 
 func SetAnimationSpeed(spd):
-	var alpha = remap(spd, 0.0, Global.player.SPEED_DEFAULT, 0.0, 1.0)
+	var alpha = remap(spd, 0.0, SPEED, 0.0, 1.0)
 	ANIMATION.speed_scale = lerp(0.0, TOP_ANIMATION_SPEED, alpha)
-
-func _input(event) -> void:
-	if event.is_action_pressed("sprint") and Global.player.is_on_floor():
-		transition.emit("SprintingPlayerState")

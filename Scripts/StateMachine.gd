@@ -15,6 +15,7 @@ func _ready():
 		else: 
 			push_warning("Incompatible child node not of type: State")
 	
+	await owner.ready
 	CURRENT_STATE.enter()
 
 func _process(delta):

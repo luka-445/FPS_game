@@ -1,27 +1,30 @@
+class_name Player 
+
 extends CharacterBody3D
 
-@export var ACCELERATION : float = 0.1
-@export var DECELERATION : float = 0.25
-@export var SPEED_DEFAULT : float = 5.0
-@export var SPEED_CROUCHING : float =  2.0
-@export var SPEED_SPRINT : float = 7.0
-@export var JUMP_VELOCITY : float = 4.5
-@export var MOUSE_SENSITIVITY : float = 0.7
-@export var TOGGLE_CROUCH : bool = true
-@export_range(5, 10, 0.1) var CROUCH_SPEED : float = 7.0
+#@export var ACCELERATION : float = 0.1
+#@export var DECELERATION : float = 0.25
+#@export var SPEED_DEFAULT : float = 5.0
+#@export var SPEED_SPRINT : float = 7.0
+#@export var JUMP_VELOCITY : float = 4.5
+@export var MOUSE_SENSITIVITY : float = 0.4
+#@export_range(5, 10, 0.1) var CROUCH_SPEED : float = 7.0
 @export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
 @export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 @export var CAMERA_CONTROLLER : Camera3D
 @export var ANIMATION_PLAYER : AnimationPlayer
 @export var CROUCH_SHAPECAST : ShapeCast3D
 
+var lastPosition = Vector3.ZERO
+var currentVelocity : Vector3
+var currentSpeed : String
 var mouseInput : bool
 var rotationInput : float
 var tiltInput : float
 var mouseRotation : Vector3
 var playerRotation : Vector3
 var cameraRotation : Vector3
-var speed : float
+#var _speed : float
 
 var isCrouching : bool = false
 var isFullscreen : bool = false
@@ -38,10 +41,7 @@ func _ready():
 	
 	# Add exception to crouch shapecast to exlude CharacterBody3D node.
 	CROUCH_SHAPECAST.add_exception($".")
-	
-	# Set default speed
-	speed = SPEED_DEFAULT
-	
+
 func _input(event):
 	if event.is_action_pressed("fullScreen") and isFullscreen == false:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -51,24 +51,12 @@ func _input(event):
 	if event.is_action_pressed("exit"):
 		get_tree().quit()
 	
-	if event.is_action_pressed("crouch") and is_on_floor():
-		ToggleCrouch()
-	
-	if event.is_action_pressed("crouch") and is_on_floor() and isCrouching == false and TOGGLE_CROUCH == false:
-		crouching(true)
-	
-	if event.is_action_released("crouch") and TOGGLE_CROUCH == false:
-		if CROUCH_SHAPECAST.is_colliding() == false:
-			crouching(false)
-		elif CROUCH_SHAPECAST.is_colliding() == true:
-			UncrouchCheck()
-		
 
 func _unhandled_input(event):
 	mouseInput = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	if mouseInput:
-		rotationInput = -event.relative.x * MOUSE_SENSITIVITY
-		tiltInput = -event.relative.y * MOUSE_SENSITIVITY
+		rotationInput = -event.relative.x * MOUSE_SENSITIVITY 
+		tiltInput = -event.relative.y * MOUSE_SENSITIVITY 
 
 func UpdateCamera(delta):
 	# Get mouse x and y rotation, and clamp x to tilt limits.
@@ -90,65 +78,34 @@ func UpdateCamera(delta):
 	rotationInput = 0.0
 	tiltInput = 0.0
 	
-	
-func _physics_process(delta):
-	
+
+func _process(delta):
 	# Add movement speed to debug panel
-	Global.debug.AddProperty("MovementSpeed", speed, 2)
+	Global.debug.AddProperty("MovementSpeed", currentSpeed , 2)
 	Global.debug.AddProperty("MouseRotation", mouseRotation, 3)
 	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-	
+	if Global.debug.visible:
+		currentVelocity = (position - lastPosition) / delta
+		lastPosition = position
+		currentSpeed = "%.2f" % Vector3.ZERO.distance_to(currentVelocity)
+		
+func _physics_process(delta):
 	UpdateCamera(delta)
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and isCrouching == false:
-		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+func UpdateGravity(delta) -> void:
+	velocity.y -= gravity * delta
+
+func UpdateInput(speed: float, acceleration: float, deceleration: float) -> void:
 	var input_dir = Input.get_vector("moveLeft", "moveRight", "moveForward", "moveBackward")
+	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if direction:
-		velocity.x = lerp(velocity.x, direction.x * speed, ACCELERATION)
-		velocity.z = lerp(velocity.z, direction.z * speed, ACCELERATION)
+		velocity.x = lerp(velocity.x, direction.x * speed, acceleration)
+		velocity.z = lerp(velocity.z, direction.z * speed, acceleration) 
 	else:
-		velocity.x = move_toward(velocity.x, 0, DECELERATION)
-		velocity.z = move_toward(velocity.z, 0, DECELERATION)
-
+		velocity.x = move_toward(velocity.x, 0, deceleration) 
+		velocity.z = move_toward(velocity.z, 0, deceleration)
+		
+func UpdateVelocity() -> void:
 	move_and_slide()
-
-func ToggleCrouch():
-	if isCrouching == true and CROUCH_SHAPECAST.is_colliding() == false:
-		crouching(false)
-	elif isCrouching == false:
-		crouching(true)
-	
-func crouching(state : bool):
-	match state:
-		true:
-			ANIMATION_PLAYER.play("Crouching", 0, CROUCH_SPEED)
-			SetMovementSpeed("crouching")
-		false:
-			ANIMATION_PLAYER.play("Crouching", 0, -CROUCH_SPEED, true)
-			SetMovementSpeed("default")
-
-func UncrouchCheck():
-	if CROUCH_SHAPECAST.is_colliding() == false:
-		crouching(false)
-	elif CROUCH_SHAPECAST.is_colliding() == true:
-		await get_tree().create_timer(0.1).timeout
-		UncrouchCheck()
-	
-func SetMovementSpeed(state : String):
-	match state:
-		"default":
-			speed = SPEED_DEFAULT
-		"crouching":
-			speed = SPEED_CROUCHING
-
-
-func _on_animation_player_animation_started(anim_name):
-	if anim_name == "Crouching":
-		isCrouching = !isCrouching
