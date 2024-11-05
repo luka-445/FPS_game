@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drdbu3ntt4tgc"
-path.s3tc="res://.godot/imported/m9_bayonet_default_2.png-8ab04615c1cb518be99e1abb8181265c.s3tc.ctex"
+uid="uid://20j85lggw3bp"
+path.s3tc="res://.godot/imported/ak-47 (1)_1.png-ba96ff91fbed98725a6173a5144f7a1b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4ff75b5544be37ec20ce68bdb0a9bf14"
+"md5": "8e6d11714189ce56710e79827c214f2b"
 }
 
 [deps]
 
-source_file="res://Assets/meshes/Weapons/M9 Bayonet/m9_bayonet_default_2.png"
-dest_files=["res://.godot/imported/m9_bayonet_default_2.png-8ab04615c1cb518be99e1abb8181265c.s3tc.ctex"]
+source_file="res://Assets/Weapons/AK47/ak-47 (1)_1.png"
+dest_files=["res://.godot/imported/ak-47 (1)_1.png-ba96ff91fbed98725a6173a5144f7a1b.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/meshes/Weapons/M9 Bayonet/m9_bayonet_default_2.png"
+roughness/src_normal="res://Assets/meshes/Weapons/AK47/ak-47 (1)_1.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

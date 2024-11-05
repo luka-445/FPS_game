@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://cp2ljnb1yi648"]
 
-[ext_resource type="Texture2D" uid="uid://pjjhl8rfd0jx" path="res://Assets/Materials/kenney_prototype_textures/dark/texture_01.png" id="1_fjdfp"]
+[ext_resource type="Texture2D" uid="uid://pjjhl8rfd0jx" path="res://Assets/materials/kenney_prototype_textures/dark/texture_01.png" id="1_fjdfp"]
 [ext_resource type="Environment" uid="uid://t4ybg7p0lmj8" path="res://Assets/World Environments/testEnvironment.tres" id="1_r4fse"]
-[ext_resource type="Texture2D" uid="uid://d1b1d2rxn27t2" path="res://Assets/Materials/kenney_prototype_textures/purple/texture_01.png" id="2_v8285"]
-[ext_resource type="Texture2D" uid="uid://chuxdtchk7qll" path="res://Assets/Materials/kenney_prototype_textures/red/texture_01.png" id="3_lebfs"]
+[ext_resource type="Texture2D" uid="uid://d1b1d2rxn27t2" path="res://Assets/materials/kenney_prototype_textures/purple/texture_01.png" id="2_v8285"]
+[ext_resource type="Texture2D" uid="uid://chuxdtchk7qll" path="res://Assets/materials/kenney_prototype_textures/red/texture_01.png" id="3_lebfs"]
 [ext_resource type="PackedScene" uid="uid://sxjs4ihx81l" path="res://Controllers/player_controller.tscn" id="4_vhl6t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7hwa"]

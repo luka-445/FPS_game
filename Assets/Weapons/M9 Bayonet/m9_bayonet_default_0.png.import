@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdvopi6kj63hr"
-path.s3tc="res://.godot/imported/m9_bayonet_default_1.png-c204ef5d40dd90682bbc18d2484979c1.s3tc.ctex"
+uid="uid://cqumyfy03qg6m"
+path.s3tc="res://.godot/imported/m9_bayonet_default_0.png-7215c6adfcf2f7ae733c5b46e5e72242.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ac37855c3ecd3a0692a5525015718781"
+"md5": "e16d8ad668712c47e814196234c7065b"
 }
 
 [deps]
 
-source_file="res://Assets/meshes/Weapons/M9 Bayonet/m9_bayonet_default_1.png"
-dest_files=["res://.godot/imported/m9_bayonet_default_1.png-c204ef5d40dd90682bbc18d2484979c1.s3tc.ctex"]
+source_file="res://Assets/Weapons/M9 Bayonet/m9_bayonet_default_0.png"
+dest_files=["res://.godot/imported/m9_bayonet_default_0.png-7215c6adfcf2f7ae733c5b46e5e72242.s3tc.ctex"]
 
 [params]
 
@@ -27,8 +27,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=8
-roughness/src_normal="res://Assets/meshes/Weapons/M9 Bayonet/m9_bayonet_default_2.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

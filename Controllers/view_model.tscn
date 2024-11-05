@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://s754mbsqopr8"]
+
+[ext_resource type="PackedScene" uid="uid://mbtyjua4edrt" path="res://Assets/Weapons/AK47/ak-47 (1).glb" id="1_22fd3"]
+
+[node name="ViewModel" type="Camera3D"]
+
+[node name="WeaponRig" type="Node3D" parent="."]
+
+[node name="AK47" type="Node3D" parent="WeaponRig"]
+
+[node name="ak47_model" parent="WeaponRig/AK47" instance=ExtResource("1_22fd3")]
+transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -0.06, -0.18, 1.8)
+
+[node name="M9_bayonet" type="Node3D" parent="WeaponRig"]

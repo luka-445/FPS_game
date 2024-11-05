@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://rywygj6vpnn2"
-path="res://.godot/imported/m9_bayonet_default.glb-12c41d42776468939a50597fccacca1e.scn"
+uid="uid://mbtyjua4edrt"
+path="res://.godot/imported/ak-47 (1).glb-bf1ecd1b7a8f540d6d7326eb632f1f33.scn"
 
 [deps]
 
-source_file="res://Assets/meshes/Weapons/M9 Bayonet/m9_bayonet_default.glb"
-dest_files=["res://.godot/imported/m9_bayonet_default.glb-12c41d42776468939a50597fccacca1e.scn"]
+source_file="res://Assets/Weapons/AK47/ak-47 (1).glb"
+dest_files=["res://.godot/imported/ak-47 (1).glb-bf1ecd1b7a8f540d6d7326eb632f1f33.scn"]
 
 [params]
 
