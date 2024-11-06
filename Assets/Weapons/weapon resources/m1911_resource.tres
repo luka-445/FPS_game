@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://cayveyfqswcij"]
+
+[ext_resource type="Script" path="res://Assets/Weapons/Weapons.gd" id="1_3ty7t"]
+
+[resource]
+script = ExtResource("1_3ty7t")
+weaponName = "1911"
+animationFire = "m1911_fire"
+animationPullout = "m1911_pullout"
+animationPutaway = "m1911_putaway"
+autoFire = false
+semiAuto = true
+primaryWeapon = false
+secondaryWeapon = true
+meleeWeapon = false

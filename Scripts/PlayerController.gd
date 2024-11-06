@@ -47,7 +47,8 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("fullScreen") and isFullscreen == false:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		isFullscreen != isFullscreen
+		WEAPON_SUB_VIEWPORT.size = DisplayServer.window_get_size()
+		isFullscreen = true
 	
 	# If Exit key (mapped to escape) is pressed, quit out.
 	if event.is_action_pressed("exit"):
@@ -62,7 +63,6 @@ func _unhandled_input(event):
 		VIEWPORT_CAMERA.sway(Vector2(event.relative.x, event.relative.y))
 
 func UpdateCamera(delta):
-	
 	# Set weapon viewport camera to same position as main camera.
 	VIEWPORT_CAMERA.global_transform = CAMERA_CONTROLLER.global_transform
 	

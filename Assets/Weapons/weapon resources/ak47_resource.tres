@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://cnm5if7kitmud"]
+
+[ext_resource type="Script" path="res://Assets/Weapons/Weapons.gd" id="1_20dsr"]
+
+[resource]
+script = ExtResource("1_20dsr")
+weaponName = "AK-47"
+animationFire = "ak47_fire"
+animationPullout = "ak47_pullout"
+animationPutaway = "ak47_putaway"
+autoFire = true
+semiAuto = false
+primaryWeapon = true
+secondaryWeapon = false
+meleeWeapon = false
