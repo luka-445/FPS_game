@@ -6,8 +6,8 @@ extends CharacterBody3D
 @export var MOUSE_SENSITIVITY : float = 0.4
 @export_group("Camera Settings")
 @export_subgroup("Camera Tilt Limits")
-@export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
-@export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
+@export var TILT_UPPER_LIMIT : float = deg_to_rad(90.0)
+@export var TILT_LOWER_LIMIT : float = deg_to_rad(-90.0)
 @export_subgroup("Camera nodes")
 @export var CAMERA_CONTROLLER : Camera3D
 @export var VIEWPORT_CAMERA : Camera3D
@@ -22,7 +22,7 @@ var currentSpeed : String
 var mouseInput : bool
 var rotationInput : float
 var tiltInput : float
-var mouseRotation : Vector3
+var mouseRotation : Vector2
 var playerRotation : Vector3
 var cameraRotation : Vector3
 #var _speed : float
@@ -67,21 +67,23 @@ func UpdateCamera(delta):
 	VIEWPORT_CAMERA.global_transform = CAMERA_CONTROLLER.global_transform
 	
 	# Get mouse x and y rotation, and clamp x to tilt limits.
+	
 	mouseRotation.x += tiltInput * delta
-	clamp(mouseRotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
+	mouseRotation.x = clamp(mouseRotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
 	mouseRotation.y += rotationInput * delta
+	
 	
 	# Isolate x and y rotations of mouse
 	playerRotation = Vector3(0.0, mouseRotation.y, 0.0)
 	cameraRotation = Vector3(mouseRotation.x, 0.0, 0.0)
 	
-	# Rotate Camera left and right
-	CAMERA_CONTROLLER.transform.basis = Basis.from_euler(cameraRotation)
-	CAMERA_CONTROLLER.rotation.z = 0
 	
 	# Tilt Camera up and down.
+	CAMERA_CONTROLLER.transform.basis = Basis.from_euler(cameraRotation)
+	# Rotate Camera left and right
 	global_transform.basis = Basis.from_euler(playerRotation)
 	
+	CAMERA_CONTROLLER.rotation.z = 0.0
 	rotationInput = 0.0
 	tiltInput = 0.0
 	
@@ -98,6 +100,7 @@ func _process(delta):
 		
 func _physics_process(delta):
 	UpdateCamera(delta)
+	
 
 func UpdateGravity(delta) -> void:
 	velocity.y -= gravity * delta

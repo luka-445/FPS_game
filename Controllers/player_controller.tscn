@@ -186,7 +186,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CameraController/Camera3D:position:x")
+tracks/6/path = NodePath("CameraController/MainCamera:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -197,7 +197,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CameraController/Camera3D:position:y")
+tracks/7/path = NodePath("CameraController/MainCamera:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -208,7 +208,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CameraController/Camera3D:position:z")
+tracks/8/path = NodePath("CameraController/MainCamera:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -235,7 +235,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Camera3D:position:x")
+tracks/0/path = NodePath("CameraController/MainCamera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -246,7 +246,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Camera3D:position:y")
+tracks/1/path = NodePath("CameraController/MainCamera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -257,7 +257,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CameraController/Camera3D:position:z")
+tracks/2/path = NodePath("CameraController/MainCamera:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -317,11 +317,11 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a7305"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
 script = ExtResource("1_hysve")
-CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
-VIEWPORT_CAMERA = NodePath("WeaponViewport/SubViewport/ViewModel")
-WEAPON_SUB_VIEWPORT = NodePath("WeaponViewport/SubViewport")
+CAMERA_CONTROLLER = NodePath("CameraController/MainCamera")
+VIEWPORT_CAMERA = NodePath("CameraController/MainCamera/WeaponViewport/SubViewport/ViewModel")
+WEAPON_SUB_VIEWPORT = NodePath("CameraController/MainCamera/WeaponViewport/SubViewport")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
 CROUCH_SHAPECAST = NodePath("ShapeCast3D")
 
@@ -335,11 +335,26 @@ mesh = SubResource("CapsuleMesh_wkxbf")
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
+[node name="MainCamera" type="Camera3D" parent="CameraController"]
 cull_mask = 1048573
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/MainCamera"]
 update_mode = 1
+
+[node name="WeaponViewport" type="SubViewportContainer" parent="CameraController/MainCamera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CameraController/MainCamera/WeaponViewport"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ViewModel" parent="CameraController/MainCamera/WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
+cull_mask = 1047554
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -370,10 +385,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_igqlc")
@@ -434,20 +445,5 @@ script = ExtResource("11_tvuup")
 
 [node name="FallingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("12_7padl")
-
-[node name="WeaponViewport" type="SubViewportContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="WeaponViewport"]
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="ViewModel" parent="WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
-cull_mask = 1047554
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -9,6 +9,6 @@ func _process(delta):
 	WEAPON_RIG.position.y = lerp(WEAPON_RIG.position.y, 0.0, alpha * delta)
 	
 # function to move weapon rig from left to right when moving.
-func sway(sway_amount):
+func sway(sway_amount : Vector2):
 	WEAPON_RIG.position.x -= sway_amount.x * SWAY_STRENGTH
 	WEAPON_RIG.position.y += sway_amount.y * SWAY_STRENGTH
