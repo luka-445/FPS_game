@@ -1,3 +1,5 @@
+class_name ViewModel
+
 extends Camera3D
 
 @export var WEAPON_RIG : Node3D

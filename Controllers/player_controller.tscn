@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://sxjs4ihx81l"]
+[gd_scene load_steps=25 format=3 uid="uid://sxjs4ihx81l"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_hysve"]
 [ext_resource type="Material" uid="uid://b5lj3iwe0gjd0" path="res://Assets/materials/player.tres" id="2_gd0h0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/CrouchingPlayerState.gd" id="10_5btfm"]
 [ext_resource type="Script" path="res://Scripts/JumpingPlayerState.gd" id="11_tvuup"]
 [ext_resource type="Script" path="res://Scripts/FallingPlayerState.gd" id="12_7padl"]
+[ext_resource type="Script" path="res://Scripts/weapon_recoil.gd" id="13_ckp8k"]
 [ext_resource type="PackedScene" uid="uid://s754mbsqopr8" path="res://Controllers/view_model.tscn" id="13_twrey"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2vig8"]
@@ -186,7 +187,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CameraController/MainCamera:position:x")
+tracks/6/path = NodePath("CameraController/Recoil/MainCamera:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -197,7 +198,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CameraController/MainCamera:position:y")
+tracks/7/path = NodePath("CameraController/Recoil/MainCamera:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -208,7 +209,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CameraController/MainCamera:position:z")
+tracks/8/path = NodePath("CameraController/Recoil/MainCamera:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -235,7 +236,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/MainCamera:position:x")
+tracks/0/path = NodePath("CameraController/Recoil/MainCamera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -246,7 +247,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/MainCamera:position:y")
+tracks/1/path = NodePath("CameraController/Recoil/MainCamera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -257,7 +258,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CameraController/MainCamera:position:z")
+tracks/2/path = NodePath("CameraController/Recoil/MainCamera:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -319,9 +320,9 @@ _data = {
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
 script = ExtResource("1_hysve")
-CAMERA_CONTROLLER = NodePath("CameraController/MainCamera")
-VIEWPORT_CAMERA = NodePath("CameraController/MainCamera/WeaponViewport/SubViewport/ViewModel")
-WEAPON_SUB_VIEWPORT = NodePath("CameraController/MainCamera/WeaponViewport/SubViewport")
+CAMERA_CONTROLLER = NodePath("CameraController/Recoil/MainCamera")
+VIEWPORT_CAMERA = NodePath("WeaponViewport/SubViewport/ViewModel")
+WEAPON_SUB_VIEWPORT = NodePath("WeaponViewport/SubViewport")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
 CROUCH_SHAPECAST = NodePath("ShapeCast3D")
 
@@ -335,26 +336,18 @@ mesh = SubResource("CapsuleMesh_wkxbf")
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="MainCamera" type="Camera3D" parent="CameraController"]
+[node name="Recoil" type="Node3D" parent="CameraController" node_paths=PackedStringArray("weapon")]
+script = ExtResource("13_ckp8k")
+recoil_amount = Vector3(0.1, 0.05, 0)
+snap_amount = 5.0
+speed = 4.0
+weapon = NodePath("../../WeaponViewport/SubViewport/ViewModel/WeaponsManager")
+
+[node name="MainCamera" type="Camera3D" parent="CameraController/Recoil"]
 cull_mask = 1048573
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/MainCamera"]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Recoil/MainCamera"]
 update_mode = 1
-
-[node name="WeaponViewport" type="SubViewportContainer" parent="CameraController/MainCamera"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="CameraController/MainCamera/WeaponViewport"]
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="ViewModel" parent="CameraController/MainCamera/WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
-cull_mask = 1047554
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -446,4 +439,21 @@ script = ExtResource("11_tvuup")
 [node name="FallingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("12_7padl")
 
+[node name="WeaponViewport" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="WeaponViewport"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ViewModel" parent="WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
+cull_mask = 1047554
+
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+
+[editable path="WeaponViewport/SubViewport/ViewModel"]

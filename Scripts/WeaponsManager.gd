@@ -1,22 +1,21 @@
+class_name WeaponsManager
+
 extends Node3D
 
+signal weaponFired
+
 @export var ANIMATION_PLAYER : AnimationPlayer
-
+var weaponIndicator : int = 0 # index of weapon in weaponStack.
 var currentWeapon : Weapon
-
+var _nextWeapon : String
+var isAttacking : bool = false
+var bulletDecal = preload("res://Scenes/bullet_hole.tscn")
+var weaponDict = {} # Dictionary of all weapon resources.
 # array of weapons held by current player.
 # array index 0 holds primary weapon.
 # index 1 holds secondary weapon.
 # index 2 holds melee weapon.
 var weaponStack = []
-
-# index of weapon in weaponStack.
-var weaponIndicator : int = 0
-
-var _nextWeapon : String
-
-# Dictionary of all weapon resources.
-var weaponDict = {}
 
 # auxilary array used to build dictionary.
 @export var weaponResourcesAux: Array[Weapon]
@@ -26,7 +25,7 @@ var weaponDict = {}
 # makes this system modular and expandable.
 @export var startWeapons: Array[String]
 
-var raycastTest = preload("res://Scenes/raycast_test_projectile.tscn")
+var bullets = 30
 
 func _ready():
 	# Initilizes start of weapon state machine.
@@ -34,7 +33,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("attack"):
+		isAttacking = true
 		Attack()
+	
+	if event.is_action_released("attack"):
+		isAttacking = false
+	
 	# pull out primary weapon.
 	if event.is_action_pressed("primaryWeapon"):
 		exit(weaponStack[0])
@@ -46,7 +50,10 @@ func _input(event):
 	# pull out melee weapon
 	if event.is_action_pressed("meleeWeapon"):
 		exit(weaponStack[2])
-	
+
+func _physics_process(delta):
+	pass
+
 func InitWeapon():
 	
 	# Create dictionary for reference to weapons.
@@ -90,13 +97,19 @@ func _on_animation_player_animation_finished(anim_name):
 	# when signal triggered, if anim_name == animationPutaway then change weapon.
 	if anim_name == currentWeapon.animationPutaway:
 		ChangeWeapon(_nextWeapon)
+	
+	if anim_name == currentWeapon.animationFire and currentWeapon.autoFire == true:
+		if isAttacking:
+			Attack()
 
-# Attack function manages attacks.
+# Attack: function creates a raycast when attack input is read.
 func Attack() -> void:
+	ANIMATION_PLAYER.play(currentWeapon.animationFire)
+	weaponFired.emit()
 	# get fps controller camera reference.
 	var camera = Global.player.CAMERA_CONTROLLER
 	# Get space state of camera.
-	var spaceState = camera.get_world_3d().direct_space_state
+	var spaceState = get_world_3d().direct_space_state
 	# get origin or center of screen
 	var centerOfScreen = get_viewport().size / 2
 	# get origin point for array, i.e starting point of raycast.
@@ -109,14 +122,37 @@ func Attack() -> void:
 	var result = spaceState.intersect_ray(query)
 	if result:
 		bulletHole(result.get("position"), result.get("normal"))
-		print(result)
+	
+	bullets -= 1;
+	
+	if bullets == 0:
+		print("gun empty")
+		bullets = 30
 
+# bulletHole: This function spawns bullet decal when raycast collides with world object.
+# Parameters:
+# position : Vector3; intersection of raycast and physics body it collided with,
+#                     in other words the position where the bullet hole needs to be spawned.
+# normal : Vector3;   The normal of the raycast vector, each raycast has a normal property
+#                     the normal dictates the perpendicular aspect, needed for properly rotating 
+#                     the bullet hole decal. 
 func bulletHole(position : Vector3, normal : Vector3 ) -> void:
-	var instance = raycastTest.instantiate()
+	# Create instance of bullet hole scene and add it to current scene root.
+	var instance = bulletDecal.instantiate()
 	get_tree().root.add_child(instance)
+	
+	# Set position of decal to where raycast hit.
 	instance.global_position = position
+	
+	# Rotate bullet decal if surface is not already pointing up.
 	instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
 	if normal != Vector3.UP and normal != Vector3.DOWN:
 		instance.rotate_object_local(Vector3(1, 0, 0), 90)
+	
+	# Create timer for how long bullet decal should stay, then fade out bullet hole before deleting it
+	# from the scene
 	await get_tree().create_timer(3).timeout
+	var fade = get_tree().create_tween()
+	fade.tween_property(instance, "modulate:a", 0, 1.5)
+	await get_tree().create_timer(1.5).timeout
 	instance.queue_free()

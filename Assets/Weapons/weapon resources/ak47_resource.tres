@@ -8,6 +8,7 @@ weaponName = "AK-47"
 animationFire = "ak47_fire"
 animationPullout = "ak47_pullout"
 animationPutaway = "ak47_putaway"
+fireRate = 600.0
 autoFire = true
 semiAuto = false
 primaryWeapon = true

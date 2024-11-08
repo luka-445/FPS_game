@@ -9,4 +9,7 @@ animationFire = "m9_bayonet_fire"
 animationPullout = "m9_bayonet_pullout"
 animationPutaway = "m9_bayonet_putaway"
 autoFire = false
+semiAuto = false
+primaryWeapon = false
+secondaryWeapon = false
 meleeWeapon = true
