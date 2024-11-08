@@ -8,6 +8,7 @@ weaponName = "1911"
 animationFire = "m1911_fire"
 animationPullout = "m1911_pullout"
 animationPutaway = "m1911_putaway"
+fireRate = 80.0
 autoFire = false
 semiAuto = true
 primaryWeapon = false

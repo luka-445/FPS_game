@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1av6if180ism"
+uid="uid://cy46w77jmc8xc"
 path.s3tc="res://.godot/imported/m1911_handgun_1.jpg-affbad9cb20c35cd20d36c5599eb3931.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "beae151e416495333e766a0f610387e9"
 }
 
 [deps]
