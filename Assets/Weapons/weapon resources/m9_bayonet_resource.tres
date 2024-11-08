@@ -8,6 +8,7 @@ weaponName = "M9 Bayonet"
 animationFire = "m9_bayonet_fire"
 animationPullout = "m9_bayonet_pullout"
 animationPutaway = "m9_bayonet_putaway"
+fireRate = 0.0
 autoFire = false
 semiAuto = false
 primaryWeapon = false
