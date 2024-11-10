@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://e88mvbkogsfj"]
+
+[ext_resource type="Shader" path="res://Assets/shaders/outline.gdshader" id="1_ebn05"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75nnq"]
+render_priority = 0
+shader = ExtResource("1_ebn05")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_75nnq")
+diffuse_mode = 3
+specular_mode = 1
