@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+EventBus="*res://Scripts/event_bus.gd"
 
 [display]
 

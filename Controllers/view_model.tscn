@@ -1,4 +1,4 @@
-[gd_scene load_steps=336 format=4 uid="uid://s754mbsqopr8"]
+[gd_scene load_steps=339 format=4 uid="uid://s754mbsqopr8"]
 
 [ext_resource type="Texture2D" uid="uid://vk0k52xxt0yv" path="res://Assets/Weapons/AK47/ak-47 (1)_0.png" id="1_a4go5"]
 [ext_resource type="Script" path="res://Scripts/ViewModel.gd" id="1_rsvuw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://cayveyfqswcij" path="res://Assets/Weapons/weapon resources/m1911_resource.tres" id="6_2iosx"]
 [ext_resource type="Texture2D" uid="uid://cqumyfy03qg6m" path="res://Assets/Weapons/M9 Bayonet/m9_bayonet_default_0.png" id="6_h68bl"]
 [ext_resource type="Texture2D" uid="uid://cdvopi6kj63hr" path="res://Assets/Weapons/M9 Bayonet/m9_bayonet_default_1.png" id="7_4p0ua"]
+[ext_resource type="Script" path="res://Scripts/recoil_physics.gd" id="7_6i8c8"]
 [ext_resource type="Texture2D" uid="uid://8qr0vvd6gt2d" path="res://Assets/Weapons/M9 Bayonet/m9_bayonet_default_2.png" id="8_v0q6a"]
 [ext_resource type="Texture2D" uid="uid://5k1ea13xmdou" path="res://Assets/Weapons/handgun_1911/m1911_handgun_0.png" id="9_1woau"]
 [ext_resource type="Texture2D" uid="uid://cy46w77jmc8xc" path="res://Assets/Weapons/handgun_1911/m1911_handgun_1.jpg" id="10_hxj0i"]
@@ -4356,6 +4357,126 @@ tracks/11/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ak47_model:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0721286, -0.15859, 1.62197)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ak47_model:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("left_hand:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00141227, -0.137364, -0.310467)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("left_hand:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0943895, -0.202945, 2.64131)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("right_hand:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0202218, -0.152156, 0.0290738)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("right_hand:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.59753)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../m1911_handgun/m1911_model:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.172406, -0.17604, -0.733886)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../m1911_handgun/m1911_model:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../m1911_handgun/right_hand:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.209048, -0.194218, -0.583498)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../m1911_handgun/right_hand:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.53781)]
+}
 
 [sub_resource type="Animation" id="Animation_3h36n"]
 resource_name = "ak47_fire"
@@ -4443,7 +4564,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_xxfcy"]
 resource_name = "m1911_fire"
-length = 0.3
+length = 0.45
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4451,7 +4572,7 @@ tracks/0/path = NodePath("../m1911_handgun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.433333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0336891), Vector3(0, 0, 0)]
@@ -4463,7 +4584,7 @@ tracks/1/path = NodePath("../m1911_handgun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.433333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.00698132, 0, 0), Vector3(0, 0, 0)]
@@ -4525,58 +4646,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_qqosu"]
-resource_name = "m9_bayonet_fire"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../M9_bayonet/right_hand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0728338, 0.0293245, -0.107895), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../M9_bayonet/right_hand:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.221568, 0.59378, -0.158761), Vector3(-0.000139102, -0.788404, -0.0743233), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../M9_bayonet/left_hand:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.400379, 0, 0), Vector3(-0.270166, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../M9_bayonet/right_hand/hand/arm_lower:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.55107, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_bcgag"]
 resource_name = "m9_bayonet_pullout"
 length = 0.5
@@ -4633,16 +4702,198 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_qqosu"]
+resource_name = "m9_bayonet_melee"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../M9_bayonet/right_hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0728338, 0.0293245, -0.107895), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../M9_bayonet/right_hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.221568, 0.59378, -0.158761), Vector3(-0.000139102, -0.788404, -0.0743233), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../M9_bayonet/left_hand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.400379, 0, 0), Vector3(-0.270166, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../M9_bayonet/right_hand/hand/arm_lower:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.55107, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6dark"]
+resource_name = "ak47_melee"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ak47_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0721286, -0.15859, 1.62197), Vector3(1.05167, 0.604667, -1.83052), Vector3(1.05167, 0.604667, -1.83052), Vector3(-0.0721286, -0.15859, 1.62197)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ak47_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-1.05099, 0.0359526, -2.2508), Vector3(-1.05099, 0.0359527, -2.27616), Vector3(-1.05099, 0.0359527, -2.27616), Vector3(0, 1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("left_hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.00141227, -0.137364, -0.310467), Vector3(-0.00141227, -0.137364, -0.310467)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("left_hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0943895, -0.202945, 2.64131), Vector3(-0.953696, 0.618197, 2.17097), Vector3(-0.953696, 0.618197, 2.17097), Vector3(-0.0943895, -0.202945, 2.64131)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("right_hand:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0202218, -0.152156, 0.0290738), Vector3(0.229997, -0.152399, -0.36774), Vector3(0.206436, -0.135479, -0.384528), Vector3(0.206436, -0.135479, -0.384528), Vector3(0.0202218, -0.152156, 0.0290738)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("right_hand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.59753), Vector3(0.529205, 0.951713, -2.55804), Vector3(0.529205, 0.951713, -2.55804), Vector3(0, 0, 1.59753)]
+}
+
+[sub_resource type="Animation" id="Animation_11qlc"]
+resource_name = "m1911_melee"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../m1911_handgun/m1911_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.172406, -0.17604, -0.733886), Vector3(0.173479, -0.0863173, -0.793613), Vector3(0.173448, -0.0927384, -0.804877), Vector3(0.172406, -0.17604, -0.733886)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../m1911_handgun/m1911_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-0.0099946, -1.57374, -1.05268), Vector3(-0.0470629, -1.50858, -1.41858), Vector3(0, 1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../m1911_handgun/right_hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.209048, -0.194218, -0.583498), Vector3(0.211424, -0.122229, -0.659455), Vector3(0.211315, -0.125531, -0.621456), Vector3(0.209048, -0.194218, -0.583498)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../m1911_handgun/right_hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.53781), Vector3(0.0866781, -0.00286745, 1.53769), Vector3(0.0866781, -0.00286745, 1.53769), Vector3(0, 0, 1.53781)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0023g"]
 _data = {
 "RESET": SubResource("Animation_bat7l"),
 "ak47_fire": SubResource("Animation_3h36n"),
+"ak47_melee": SubResource("Animation_6dark"),
 "ak47_pullout": SubResource("Animation_j78d3"),
 "ak47_putaway": SubResource("Animation_iecy1"),
 "m1911_fire": SubResource("Animation_xxfcy"),
+"m1911_melee": SubResource("Animation_11qlc"),
 "m1911_pullout": SubResource("Animation_db1ad"),
 "m1911_putaway": SubResource("Animation_7n5sc"),
-"m9_bayonet_fire": SubResource("Animation_qqosu"),
+"m9_bayonet_melee": SubResource("Animation_qqosu"),
 "m9_bayonet_pullout": SubResource("Animation_bcgag"),
 "m9_bayonet_putaway": SubResource("Animation_2qh28")
 }
@@ -4650,1234 +4901,1248 @@ _data = {
 [node name="ViewModel" type="Camera3D" node_paths=PackedStringArray("WEAPON_RIG")]
 fov = 35.0
 script = ExtResource("1_rsvuw")
-WEAPON_RIG = NodePath("WeaponsManager/WeaponRig")
+WEAPON_RIG = NodePath("WeaponsManager/RecoilPosition/WeaponRig")
 
 [node name="WeaponsManager" type="Node3D" parent="." node_paths=PackedStringArray("ANIMATION_PLAYER")]
 unique_name_in_owner = true
 script = ExtResource("2_063mt")
-ANIMATION_PLAYER = NodePath("WeaponRig/AnimationPlayer")
+ANIMATION_PLAYER = NodePath("RecoilPosition/WeaponRig/AnimationPlayer")
 weaponResourcesAux = Array[ExtResource("3_valo7")]([ExtResource("4_gygkn"), ExtResource("5_n5cgb"), ExtResource("6_2iosx")])
 startWeapons = Array[String](["AK-47", "1911", "M9 Bayonet"])
 
-[node name="WeaponRig" type="Node3D" parent="WeaponsManager"]
+[node name="RecoilPosition" type="Node3D" parent="WeaponsManager" node_paths=PackedStringArray("weapon")]
+script = ExtResource("7_6i8c8")
+weapon = NodePath("..")
 
-[node name="AK47" type="Node3D" parent="WeaponsManager/WeaponRig"]
+[node name="WeaponRig" type="Node3D" parent="WeaponsManager/RecoilPosition"]
+
+[node name="AK47" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig"]
 visible = false
 
-[node name="ak47_model" type="Node3D" parent="WeaponsManager/WeaponRig/AK47"]
+[node name="ak47_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47"]
 transform = Transform3D(-1.8922e-08, 0, 0.432885, 0, 0.432885, 0, -0.432885, 0, -1.8922e-08, -0.0721286, -0.15859, 1.62197)
 
-[node name="ak47_local_model" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model"]
+[node name="ak47_local_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
 
-[node name="ab33b6c369104263bcd7c8f59450325e_fbx" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model"]
+[node name="ab33b6c369104263bcd7c8f59450325e_fbx" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model"]
 transform = Transform3D(0.001, 0, 0, 0, 0, -0.001, 0, 0.001, 0, 0, 0, 0)
 
-[node name="RootNode" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx"]
+[node name="RootNode" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx"]
 
-[node name="bm_magazine_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_magazine_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4705.26, -2.50584, 380.224)
 
-[node name="bm_magazine_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazine_low"]
+[node name="bm_magazine_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazine_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_urftd")
 skeleton = NodePath("")
 
-[node name="u_dustcoverHolder_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="u_dustcoverHolder_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4589.47, 261.195, 379.581)
 
-[node name="u_dustcoverHolder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/u_dustcoverHolder_low"]
+[node name="u_dustcoverHolder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/u_dustcoverHolder_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_2y1st")
 skeleton = NodePath("")
 
-[node name="r_flap_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_flap_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4751.41, 237.612, 437.223)
 
-[node name="r_flap_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_flap_low"]
+[node name="r_flap_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_flap_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_dmd4g")
 skeleton = NodePath("")
 
-[node name="r_upperCylinderHole_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_upperCylinderHole_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5222.41, 277.407, 380.527)
 
-[node name="r_upperCylinderHole_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_upperCylinderHole_low"]
+[node name="r_upperCylinderHole_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_upperCylinderHole_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_5lvoy")
 skeleton = NodePath("")
 
-[node name="l_stockWood_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_stockWood_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 3987.75, 144.636, 379.581)
 
-[node name="l_stockWood_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockWood_low"]
+[node name="l_stockWood_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockWood_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_18unm")
 skeleton = NodePath("")
 
-[node name="m_safetyswitch_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="m_safetyswitch_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4385.05, 201.456, 425.143)
 
-[node name="m_safetyswitch_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_safetyswitch_low"]
+[node name="m_safetyswitch_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_safetyswitch_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_yb8fy")
 skeleton = NodePath("")
 
-[node name="bm_triggerBasePart_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_triggerBasePart_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4538.9, 107.379, 378.892)
 
-[node name="bm_triggerBasePart_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBasePart_low"]
+[node name="bm_triggerBasePart_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBasePart_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_q1mao")
 skeleton = NodePath("")
 
-[node name="bl_grip_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bl_grip_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4314, 52.8826, 379.58)
 
-[node name="bl_grip_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bl_grip_low"]
+[node name="bl_grip_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bl_grip_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_qafwb")
 skeleton = NodePath("")
 
-[node name="r_buttons_high" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_buttons_high" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4778.08, 241.436, 354.477)
 
-[node name="r_buttons_high_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_buttons_high"]
+[node name="r_buttons_high_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_buttons_high"]
 layers = 2
 mesh = SubResource("ArrayMesh_j4ybn")
 skeleton = NodePath("")
 
-[node name="ls2_button3_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ls2_button3_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4675.75, 180.089, 340.422)
 
-[node name="ls2_button3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ls2_button3_low"]
+[node name="ls2_button3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ls2_button3_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_1nhg8")
 skeleton = NodePath("")
 
-[node name="ls2_button2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ls2_button2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4741.72, 216.942, 340.422)
 
-[node name="ls2_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ls2_button2_low"]
+[node name="ls2_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ls2_button2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_vfjsn")
 skeleton = NodePath("")
 
-[node name="r_button3_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_button3_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4776.58, 216.942, 419.132)
 
-[node name="r_button3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_button3_low"]
+[node name="r_button3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_button3_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_ju05k")
 skeleton = NodePath("")
 
-[node name="l_button2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_button2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4340.59, 188.737, 419.132)
 
-[node name="l_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_button2_low"]
+[node name="l_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_button2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_o53th")
 skeleton = NodePath("")
 
-[node name="l_button1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_button1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4273.39, 216.81, 419.132)
 
-[node name="l_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_button1_low"]
+[node name="l_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_button1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_3fs8s")
 skeleton = NodePath("")
 
-[node name="r_button2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_button2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4740.77, 216.199, 419.043)
 
-[node name="r_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_button2_low"]
+[node name="r_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_button2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_oqg6a")
 skeleton = NodePath("")
 
-[node name="ls2_button1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ls2_button1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4777.21, 215.996, 340.511)
 
-[node name="ls2_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ls2_button1_low"]
+[node name="ls2_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ls2_button1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_kkt6h")
 skeleton = NodePath("")
 
-[node name="r_button1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_button1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4675.05, 180.385, 419.043)
 
-[node name="r_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_button1_low"]
+[node name="r_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_button1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_xtqkw")
 skeleton = NodePath("")
 
-[node name="rs2_button2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="rs2_button2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4340.65, 188.634, 340.489)
 
-[node name="rs2_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/rs2_button2_low"]
+[node name="rs2_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/rs2_button2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_1f7l3")
 skeleton = NodePath("")
 
-[node name="rs2_button1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="rs2_button1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4272.14, 215.337, 340.489)
 
-[node name="rs2_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/rs2_button1_low"]
+[node name="rs2_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/rs2_button1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_njde6")
 skeleton = NodePath("")
 
-[node name="m_button2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="m_button2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4515.43, 174.518, 340.004)
 
-[node name="m_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_button2_low"]
+[node name="m_button2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_button2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_utheo")
 skeleton = NodePath("")
 
-[node name="m_button3_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="m_button3_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4548.31, 168.658, 340.004)
 
-[node name="m_button3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_button3_low"]
+[node name="m_button3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_button3_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_0w55g")
 skeleton = NodePath("")
 
-[node name="m_button1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="m_button1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 1.74846e-07, -3.97047e-23, -3.97047e-23, 3.33067e-16, 1, 1.74846e-07, -1, 3.33067e-16, 4433.93, 159.137, 340.004)
 
-[node name="m_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_button1_low"]
+[node name="m_button1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_button1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_c8lqh")
 skeleton = NodePath("")
 
-[node name="r_numberSwitch_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_numberSwitch_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4881.51, 307.321, 406.382)
 
-[node name="r_numberSwitch_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberSwitch_low"]
+[node name="r_numberSwitch_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberSwitch_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_r3ymi")
 skeleton = NodePath("")
 
-[node name="r_numberSwitchButton_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_numberSwitchButton_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4881.65, 306.972, 405.455)
 
-[node name="r_numberSwitchButton_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberSwitchButton_low"]
+[node name="r_numberSwitchButton_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberSwitchButton_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_n30po")
 skeleton = NodePath("")
 
-[node name="ur_numberHolder1" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ur_numberHolder1" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4779.56, 319.707, 379.941)
 
-[node name="ur_numberHolder1_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_numberHolder1"]
+[node name="ur_numberHolder1_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_numberHolder1"]
 layers = 2
 mesh = SubResource("ArrayMesh_5ag7q")
 skeleton = NodePath("")
 
-[node name="r_numberBaseCircle_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_numberBaseCircle_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4880.11, 306.616, 360.541)
 
-[node name="r_numberBaseCircle_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberBaseCircle_low"]
+[node name="r_numberBaseCircle_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberBaseCircle_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_yyun0")
 skeleton = NodePath("")
 
-[node name="ur_woodUpper_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ur_woodUpper_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, -1.74846e-07, 3.97047e-23, 3.97047e-23, 3.33067e-16, 1, -1.74846e-07, -1, 3.33067e-16, 5021.08, 282.682, 379.581)
 
-[node name="ur_woodUpper_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_woodUpper_low"]
+[node name="ur_woodUpper_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_woodUpper_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_uf6i7")
 skeleton = NodePath("")
 
-[node name="r_Connector_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_Connector_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5310.43, 253.282, 379.581)
 
-[node name="r_Connector_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_Connector_low"]
+[node name="r_Connector_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_Connector_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_dxvl0")
 skeleton = NodePath("")
 
-[node name="r_woodholderLowerRight_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_woodholderLowerRight_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5144.65, 214.63, 374.365)
 
-[node name="r_woodholderLowerRight_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholderLowerRight_low"]
+[node name="r_woodholderLowerRight_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholderLowerRight_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_aqa0j")
 skeleton = NodePath("")
 
-[node name="r_barrelAim_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_barrelAim_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5544.02, 260.728, 379.584)
 
-[node name="r_barrelAim_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelAim_low"]
+[node name="r_barrelAim_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelAim_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_qwe3m")
 skeleton = NodePath("")
 
-[node name="r_barrelAimCylinder_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_barrelAimCylinder_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5551.18, 293.478, 379.584)
 
-[node name="r_barrelAimCylinder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelAimCylinder_low"]
+[node name="r_barrelAimCylinder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelAimCylinder_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_r6mwy")
 skeleton = NodePath("")
 
-[node name="r_barrelEnd_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_barrelEnd_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5602.19, 228.645, 379.581)
 
-[node name="r_barrelEnd_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelEnd_low"]
+[node name="r_barrelEnd_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelEnd_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_fplc5")
 skeleton = NodePath("")
 
-[node name="r_barrelHolder_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_barrelHolder_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5168.47, 225.292, 379.668)
 
-[node name="r_barrelHolder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelHolder_low"]
+[node name="r_barrelHolder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrelHolder_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_t1s0k")
 skeleton = NodePath("")
 
-[node name="bm_triggerBase_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_triggerBase_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4480.06, 117.671, 379.353)
 
-[node name="bm_triggerBase_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBase_low"]
+[node name="bm_triggerBase_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBase_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_gt21i")
 skeleton = NodePath("")
 
-[node name="r_lowerCylinder_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_lowerCylinder_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5339.95, 194.919, 378.945)
 
-[node name="r_lowerCylinder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_lowerCylinder_low"]
+[node name="r_lowerCylinder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_lowerCylinder_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_8cb8n")
 skeleton = NodePath("")
 
-[node name="r_barrel_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_barrel_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5358.56, 225.292, 379.581)
 
-[node name="r_barrel_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrel_low"]
+[node name="r_barrel_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_barrel_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_amwa7")
 skeleton = NodePath("")
 
-[node name="l_stockMetal_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_stockMetal_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 3730.27, 144.636, 379.581)
 
-[node name="l_stockMetal_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockMetal_low"]
+[node name="l_stockMetal_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockMetal_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_pwjt3")
 skeleton = NodePath("")
 
-[node name="l_stockBase_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_stockBase_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4211.98, 223.924, 379.581)
 
-[node name="l_stockBase_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockBase_low"]
+[node name="l_stockBase_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockBase_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_t1xxx")
 skeleton = NodePath("")
 
-[node name="bm_magazineBottom_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_magazineBottom_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4817.49, -157.941, 378.919)
 
-[node name="bm_magazineBottom_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazineBottom_low"]
+[node name="bm_magazineBottom_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazineBottom_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_4f7wg")
 skeleton = NodePath("")
 
-[node name="r_woodholderLeft_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_woodholderLeft_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4900.85, 282.936, 379.581)
 
-[node name="r_woodholderLeft_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholderLeft_low"]
+[node name="r_woodholderLeft_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholderLeft_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_ir7l6")
 skeleton = NodePath("")
 
-[node name="r_woodholderUpperRight_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_woodholderUpperRight_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5137.7, 283.319, 379.581)
 
-[node name="r_woodholderUpperRight_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholderUpperRight_low"]
+[node name="r_woodholderUpperRight_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholderUpperRight_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_hv1f5")
 skeleton = NodePath("")
 
-[node name="r_woodholder_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_woodholder_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5151.05, 242.352, 377.784)
 
-[node name="r_woodholder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholder_low"]
+[node name="r_woodholder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodholder_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_mxbpt")
 skeleton = NodePath("")
 
-[node name="r_connectorPart2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_connectorPart2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5350.73, 200.235, 379.833)
 
-[node name="r_connectorPart2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_connectorPart2_low"]
+[node name="r_connectorPart2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_connectorPart2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_rbm2x")
 skeleton = NodePath("")
 
-[node name="r_connectorPart1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_connectorPart1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 5315.68, 209.562, 379.581)
 
-[node name="r_connectorPart1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_connectorPart1_low"]
+[node name="r_connectorPart1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_connectorPart1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_v05un")
 skeleton = NodePath("")
 
-[node name="m_base_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="m_base_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4534.81, 185.135, 379.801)
 
-[node name="m_base_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_base_low"]
+[node name="m_base_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/m_base_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_7n2y6")
 skeleton = NodePath("")
 
-[node name="bm_trigger_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_trigger_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4434.72, 127.218, 379.523)
 
-[node name="bm_trigger_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_trigger_low"]
+[node name="bm_trigger_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_trigger_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_ftjad")
 skeleton = NodePath("")
 
-[node name="bm_magazinePart3_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_magazinePart3_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4551.72, 167.051, 377.199)
 
-[node name="bm_magazinePart3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazinePart3_low"]
+[node name="bm_magazinePart3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazinePart3_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_4pao7")
 skeleton = NodePath("")
 
-[node name="bm_magazinePart1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_magazinePart1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4610.03, 174.65, 399.93)
 
-[node name="bm_magazinePart1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazinePart1_low"]
+[node name="bm_magazinePart1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazinePart1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_vsotw")
 skeleton = NodePath("")
 
-[node name="u_dustcover_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="u_dustcover_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4503.33, 268.105, 379.581)
 
-[node name="u_dustcover_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/u_dustcover_low"]
+[node name="u_dustcover_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/u_dustcover_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_0wbpw")
 skeleton = NodePath("")
 
-[node name="ul_dustcoverScroll_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ul_dustcoverScroll_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4273.86, 274.384, 378.807)
 
-[node name="ul_dustcoverScroll_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ul_dustcoverScroll_low"]
+[node name="ul_dustcoverScroll_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ul_dustcoverScroll_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_0rt8i")
 skeleton = NodePath("")
 
-[node name="r_baseNumber1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_baseNumber1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4778.03, 245.75, 407.201)
 
-[node name="r_baseNumber1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_baseNumber1_low"]
+[node name="r_baseNumber1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_baseNumber1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_wbqon")
 skeleton = NodePath("")
 
-[node name="r_numberBase_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_numberBase_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4823.32, 284.837, 379.941)
 
-[node name="r_numberBase_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberBase_low"]
+[node name="r_numberBase_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_numberBase_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_r1x7q")
 skeleton = NodePath("")
 
-[node name="ur_numberBase2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ur_numberBase2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4818.43, 314.256, 379.941)
 
-[node name="ur_numberBase2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_numberBase2_low"]
+[node name="ur_numberBase2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_numberBase2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_mpwhi")
 skeleton = NodePath("")
 
-[node name="ur_number_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ur_number_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4802.5, 327.478, 380.075)
 
-[node name="ur_number_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_number_low"]
+[node name="ur_number_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_number_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_7jlvp")
 skeleton = NodePath("")
 
-[node name="l_beltHolder_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_beltHolder_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 3848.36, 68.4508, 379.338)
 
-[node name="l_beltHolder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_beltHolder_low"]
+[node name="l_beltHolder_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_beltHolder_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_g0yu0")
 skeleton = NodePath("")
 
-[node name="l_belt_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_belt_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 3849.36, 46.3795, 379.359)
 
-[node name="l_belt_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_belt_low"]
+[node name="l_belt_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_belt_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_wnbu5")
 skeleton = NodePath("")
 
-[node name="l_stockScrew_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="l_stockScrew_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4203.13, 227.611, 379.433)
 
-[node name="l_stockScrew_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockScrew_low"]
+[node name="l_stockScrew_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/l_stockScrew_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_nfgtj")
 skeleton = NodePath("")
 
-[node name="bm_triggerBaseButton4_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_triggerBaseButton4_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, -1.74846e-07, 1, 0, -1, -1.74846e-07, 4544.7, 142.575, 400.044)
 
-[node name="bm_triggerBaseButton4_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton4_low"]
+[node name="bm_triggerBaseButton4_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton4_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_j3bd3")
 skeleton = NodePath("")
 
-[node name="bm_triggerBaseButton3_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_triggerBaseButton3_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, -1.74846e-07, 1, 0, -1, -1.74846e-07, 4528.9, 142.575, 400.044)
 
-[node name="bm_triggerBaseButton3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton3_low"]
+[node name="bm_triggerBaseButton3_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton3_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_q82dl")
 skeleton = NodePath("")
 
-[node name="bm_triggerBaseButton2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_triggerBaseButton2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, -1.74846e-07, 1, 0, -1, -1.74846e-07, 4544.7, 142.575, 358.73)
 
-[node name="bm_triggerBaseButton2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton2_low"]
+[node name="bm_triggerBaseButton2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_2pe82")
 skeleton = NodePath("")
 
-[node name="bm_triggerBaseButton1_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_triggerBaseButton1_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, -1.74846e-07, 1, 0, -1, -1.74846e-07, 4528.9, 142.575, 358.73)
 
-[node name="bm_triggerBaseButton1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton1_low"]
+[node name="bm_triggerBaseButton1_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_triggerBaseButton1_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_wrdxf")
 skeleton = NodePath("")
 
-[node name="r_baseNumber2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_baseNumber2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4778.03, 245.75, 352.699)
 
-[node name="r_baseNumber2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_baseNumber2_low"]
+[node name="r_baseNumber2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_baseNumber2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_6tu8m")
 skeleton = NodePath("")
 
-[node name="ur_numberHolder2" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="ur_numberHolder2" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4779.56, 319.707, 379.941)
 
-[node name="ur_numberHolder2_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_numberHolder2"]
+[node name="ur_numberHolder2_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/ur_numberHolder2"]
 layers = 2
 mesh = SubResource("ArrayMesh_e8trs")
 skeleton = NodePath("")
 
-[node name="r_woodLower_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="r_woodLower_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(4.37114e-08, 1.62921e-07, 1, -1.32349e-23, 1, -1.62921e-07, -1, 7.12149e-15, 4.37114e-08, 4963.26, 201.501, 378.356)
 
-[node name="Object_130" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodLower_low"]
+[node name="Object_130" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodLower_low"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378.356, 8.45914, 107.493)
 
-[node name="r_woodLower_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodLower_low/Object_130"]
+[node name="r_woodLower_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/r_woodLower_low/Object_130"]
 layers = 2
 mesh = SubResource("ArrayMesh_rctfa")
 skeleton = NodePath("")
 
-[node name="bm_magazinePart2_low" type="Node3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
+[node name="bm_magazinePart2_low" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 4610.03, 174.65, 360.021)
 
-[node name="bm_magazinePart2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazinePart2_low"]
+[node name="bm_magazinePart2_low_Material #44_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model/ak47_local_model/ab33b6c369104263bcd7c8f59450325e_fbx/RootNode/bm_magazinePart2_low"]
 layers = 2
 mesh = SubResource("ArrayMesh_jo0ih")
 skeleton = NodePath("")
 
-[node name="left_hand" type="Node3D" parent="WeaponsManager/WeaponRig/AK47"]
-transform = Transform3D(-0.0278988, -0.0159618, -0.00658348, 0.0156679, -0.0286605, 0.00309229, -0.00725533, -0.000514422, 0.0319932, -0.00141227, -0.137364, -0.310467)
+[node name="left_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47"]
+transform = Transform3D(-0.0278988, -0.0159619, -0.0065835, 0.0156679, -0.0286605, 0.00309228, -0.00725533, -0.00051444, 0.0319932, -0.00141227, -0.137364, -0.310467)
 
-[node name="hand" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand"]
+[node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand"]
 transform = Transform3D(1.15612, 0, 0, 0, 1.15612, 0, 0, 0, 1.15612, -0.0644766, -2.41036, -5.37298)
 layers = 2
 mesh = SubResource("ArrayMesh_7smn4")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand"]
+[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand"]
 transform = Transform3D(0.988879, 0.0101388, -0.148378, 0.0798372, 0.805549, 0.587126, 0.125479, -0.592442, 0.795781, 0, 0.0477059, 0.262971)
 layers = 2
 mesh = SubResource("ArrayMesh_oitsb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand"]
+[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand"]
 transform = Transform3D(0.827776, -0.0172611, 0.560792, 9.31323e-10, 0.999527, 0.0307653, -0.561058, -0.0254668, 0.827385, 0.593248, -0.0445008, -1.90566)
 layers = 2
 mesh = SubResource("ArrayMesh_2w0k7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/index_0"]
+[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/index_0"]
 transform = Transform3D(1, 0, 0, 0, 0.875076, 0.483985, 0, -0.483985, 0.875076, 0, 0, -0.520542)
 layers = 2
 mesh = SubResource("ArrayMesh_vvfgk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/index_0/index_1"]
+[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/index_0/index_1"]
 transform = Transform3D(1, 0, 0, 0, 0.824482, 0.565888, 0, -0.565888, 0.824482, 0, 0, -0.496836)
 layers = 2
 mesh = SubResource("ArrayMesh_c6s0u")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand"]
+[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand"]
 transform = Transform3D(0.83045, -0.241282, 0.502131, -1.86265e-09, 0.901342, 0.433109, -0.557093, -0.359675, 0.748519, 0.173582, 0.0524447, -1.91205)
 layers = 2
 mesh = SubResource("ArrayMesh_h1qk2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/middle_0"]
+[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/middle_0"]
 transform = Transform3D(1, 0, 0, 0, 0.448461, 0.893802, 0, -0.893802, 0.448461, 0, 0, -0.595449)
 layers = 2
 mesh = SubResource("ArrayMesh_vc5eu")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/middle_0/middle_1"]
+[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/middle_0/middle_1"]
 transform = Transform3D(1, 0, 0, 0, 0.639063, 0.769154, 0, -0.769154, 0.639063, 0, 0, -0.576577)
 layers = 2
 mesh = SubResource("ArrayMesh_p8tsl")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand"]
+[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand"]
 transform = Transform3D(0.830586, -0.554991, -0.0459504, 0, -0.0825126, 0.99659, -0.55689, -0.827754, -0.0685338, -0.600075, 0.0332805, -1.82099)
 layers = 2
 mesh = SubResource("ArrayMesh_o2oyv")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/pinky_0"]
+[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/pinky_0"]
 transform = Transform3D(1, 0, 0, 0, 0.843888, 0.536519, 0, -0.536519, 0.843888, 0, 0, -0.508631)
 layers = 2
 mesh = SubResource("ArrayMesh_goxh8")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/pinky_0/pinky_1"]
+[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/pinky_0/pinky_1"]
 transform = Transform3D(1, 0, 0, 0, 0.945604, 0.325321, 0, -0.325321, 0.945604, 0, 0, -0.484157)
 layers = 2
 mesh = SubResource("ArrayMesh_a86vx")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand"]
+[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand"]
 transform = Transform3D(0.836229, -0.503847, 0.21647, 0, 0.394744, 0.918791, -0.548381, -0.76832, 0.330096, -0.24004, 0.0976809, -1.97767)
 layers = 2
 mesh = SubResource("ArrayMesh_xtqvb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/ring_0"]
+[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/ring_0"]
 transform = Transform3D(1, 0, 0, 0, 0.590141, 0.8073, 0, -0.8073, 0.590141, 0, 0, -0.578411)
 layers = 2
 mesh = SubResource("ArrayMesh_iabwj")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/ring_0/ring_1"]
+[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/ring_0/ring_1"]
 transform = Transform3D(1, 0, 0, 0, 0.921056, 0.389429, 0, -0.389429, 0.921056, 0, 0, -0.558439)
 layers = 2
 mesh = SubResource("ArrayMesh_4rnvq")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand"]
+[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand"]
 transform = Transform3D(0.648744, 0.941901, 0.35885, -0.904332, 0.73238, -0.287443, -0.445122, -0.115163, 1.10699, 0.725133, -0.121869, -0.687425)
 layers = 2
 mesh = SubResource("ArrayMesh_7n6ei")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/thumb_0"]
+[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/thumb_0"]
 transform = Transform3D(0.963425, 0, 0.267978, 0, 1, 0, -0.267978, 0, 0.963425, 0.418848, 0, -0.541475)
 layers = 2
 mesh = SubResource("ArrayMesh_3do5v")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/left_hand/hand/thumb_0/thumb_1"]
+[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/thumb_0/thumb_1"]
 transform = Transform3D(0.99987, 1.16415e-10, 0.0161087, 0.00184646, 0.993409, -0.11461, -0.0160025, 0.114625, 0.99328, 0.286444, 0, -0.397435)
 layers = 2
 mesh = SubResource("ArrayMesh_ffs60")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="right_hand" type="Node3D" parent="WeaponsManager/WeaponRig/AK47"]
+[node name="right_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47"]
 transform = Transform3D(-0.00102579, -0.0383547, 0, 0.0383547, -0.00102579, 0, 0, 0, 0.0383684, 0.0202218, -0.152156, 0.0290738)
 
-[node name="hand" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand"]
+[node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand"]
 transform = Transform3D(1.15612, 0, 0, 0, 1.15612, 0, 0, 0, 1.15612, -0.0644766, -2.41036, -5.37298)
 layers = 2
 mesh = SubResource("ArrayMesh_7smn4")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand"]
+[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118854, 0.00119257)
 layers = 2
 mesh = SubResource("ArrayMesh_oitsb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand"]
+[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.736581, -0.676349, 0, 0.676349, 0.736581, 0.635515, 0, -1.8433)
 layers = 2
 mesh = SubResource("ArrayMesh_2w0k7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/index_0"]
+[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/index_0"]
 transform = Transform3D(1, 0, 0, 0, 0.461145, -0.887325, 0, 0.887325, 0.461145, 0, 0, -0.520542)
 layers = 2
 mesh = SubResource("ArrayMesh_vvfgk")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/index_0/index_1"]
+[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/index_0/index_1"]
 transform = Transform3D(1, 0, 0, 0, 0.490843, -0.871248, 0, 0.871248, 0.490843, 0, 0, -0.496836)
 layers = 2
 mesh = SubResource("ArrayMesh_c6s0u")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand"]
+[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.170364, -0.985381, 0, 0.985381, 0.170364, 0.219422, 0, -1.96367)
 layers = 2
 mesh = SubResource("ArrayMesh_h1qk2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/middle_0"]
+[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/middle_0"]
 transform = Transform3D(1, 0, 0, 0, 0.423946, -0.905687, 0, 0.905687, 0.423946, 0, 0, -0.595449)
 layers = 2
 mesh = SubResource("ArrayMesh_vc5eu")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/middle_0/middle_1"]
+[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/middle_0/middle_1"]
 transform = Transform3D(1, 0, 0, 0, 0.452513, -0.891758, 0, 0.891758, 0.452513, 0, 0, -0.576577)
 layers = 2
 mesh = SubResource("ArrayMesh_p8tsl")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand"]
+[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, -0.0811732, -0.9967, 0, 0.9967, -0.0811732, -0.636916, 0, -1.87594)
 layers = 2
 mesh = SubResource("ArrayMesh_o2oyv")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/pinky_0"]
+[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/pinky_0"]
 transform = Transform3D(1, 0, 0, 0, 0.753093, -0.657914, 0, 0.657914, 0.753093, 0, 0, -0.508631)
 layers = 2
 mesh = SubResource("ArrayMesh_goxh8")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/pinky_0/pinky_1"]
+[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/pinky_0/pinky_1"]
 transform = Transform3D(1, 0, 0, 0, 0.796593, -0.604516, 0, 0.604516, 0.796593, 0, 0, -0.484157)
 layers = 2
 mesh = SubResource("ArrayMesh_a86vx")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand"]
+[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, -0.213883, -0.976859, 0, 0.976859, -0.213883, -0.22161, 0, -1.94957)
 layers = 2
 mesh = SubResource("ArrayMesh_xtqvb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/ring_0"]
+[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/ring_0"]
 transform = Transform3D(1, 0, 0, 0, 0.726431, -0.68724, 0, 0.68724, 0.726431, 0, 0, -0.578411)
 layers = 2
 mesh = SubResource("ArrayMesh_iabwj")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/ring_0/ring_1"]
+[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/ring_0/ring_1"]
 transform = Transform3D(1, 0, 0, 0, 0.740136, -0.672457, 0, 0.672457, 0.740136, 0, 0, -0.558439)
 layers = 2
 mesh = SubResource("ArrayMesh_4rnvq")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand"]
+[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand"]
 transform = Transform3D(0.286242, -1.15842, -0.113753, 1.07653, 0.308016, -0.427816, 0.442681, -2.96503e-08, 1.11394, 0.583166, 0.0919029, -0.53745)
 layers = 2
 mesh = SubResource("ArrayMesh_7n6ei")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/thumb_0"]
+[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/thumb_0"]
 transform = Transform3D(0.806145, 0, 0.591718, 0, 1, 0, -0.591718, 0, 0.806145, 0.418848, 0, -0.541475)
 layers = 2
 mesh = SubResource("ArrayMesh_3do5v")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/AK47/right_hand/hand/thumb_0/thumb_1"]
+[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/thumb_0/thumb_1"]
 transform = Transform3D(0.914105, 0, 0.405477, 0, 1, 0, -0.405477, 0, 0.914105, 0.286444, 0, -0.397435)
 layers = 2
 mesh = SubResource("ArrayMesh_ffs60")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="M9_bayonet" type="Node3D" parent="WeaponsManager/WeaponRig"]
+[node name="M9_bayonet" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig"]
 visible = false
 
-[node name="right_hand" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet"]
+[node name="right_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet"]
 
-[node name="hand" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand"]
+[node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand"]
 transform = Transform3D(-0.0573641, -0.0119828, -0.0142323, 0.0181338, -0.046327, -0.0340846, -0.00416067, -0.0367016, 0.0476704, 0.131755, -0.136242, -0.35845)
 layers = 2
 mesh = SubResource("ArrayMesh_rj55d")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand"]
+[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118854, 0.00119257)
 layers = 2
 mesh = SubResource("ArrayMesh_am5tx")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand"]
+[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.433659, -0.901077, 0, 0.901077, 0.433659, 0.635515, 0, -1.8433)
 layers = 2
 mesh = SubResource("ArrayMesh_cxccb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/index_0"]
+[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/index_0"]
 transform = Transform3D(1, 0, 0, 0, 0.433659, -0.901077, 0, 0.901077, 0.433659, 0, 0, -0.520542)
 layers = 2
 mesh = SubResource("ArrayMesh_p62h3")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/index_0/index_1"]
+[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/index_0/index_1"]
 transform = Transform3D(1, 0, 0, 0, 0.433659, -0.901077, 0, 0.901077, 0.433659, 0, 0, -0.496836)
 layers = 2
 mesh = SubResource("ArrayMesh_qvpdq")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand"]
+[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0.219422, 0, -1.96367)
 layers = 2
 mesh = SubResource("ArrayMesh_3oqi7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/middle_0"]
+[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/middle_0"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0, 0, -0.595449)
 layers = 2
 mesh = SubResource("ArrayMesh_jc8sy")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/middle_0/middle_1"]
+[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/middle_0/middle_1"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0, 0, -0.576577)
 layers = 2
 mesh = SubResource("ArrayMesh_tmcws")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand"]
+[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, -0.636916, 0, -1.87594)
 layers = 2
 mesh = SubResource("ArrayMesh_rlit0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/pinky_0"]
+[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/pinky_0"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0, 0, -0.508631)
 layers = 2
 mesh = SubResource("ArrayMesh_gdsd2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/pinky_0/pinky_1"]
+[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/pinky_0/pinky_1"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0, 0, -0.484157)
 layers = 2
 mesh = SubResource("ArrayMesh_jacxp")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand"]
+[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, -0.22161, 0, -1.94957)
 layers = 2
 mesh = SubResource("ArrayMesh_ues5w")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/ring_0"]
+[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/ring_0"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0, 0, -0.578411)
 layers = 2
 mesh = SubResource("ArrayMesh_rycoj")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/ring_0/ring_1"]
+[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/ring_0/ring_1"]
 transform = Transform3D(1, 0, 0, 0, 0.22325, -0.974761, 0, 0.974761, 0.22325, 0, 0, -0.558439)
 layers = 2
 mesh = SubResource("ArrayMesh_3cuah")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand"]
+[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand"]
 transform = Transform3D(0.151998, -1.16237, -0.25021, 1.189, 0.148594, 0.0319861, 3.49166e-09, -0.252246, 1.17183, 0.416661, -0.0161629, -0.435908)
 layers = 2
 mesh = SubResource("ArrayMesh_3073y")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/thumb_0"]
+[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/thumb_0"]
 transform = Transform3D(0.341677, -0.566695, -0.749742, 0.923304, 0.351295, 0.155247, 0.175403, -0.745284, 0.643262, 0.418848, 0, -0.541475)
 layers = 2
 mesh = SubResource("ArrayMesh_1maqd")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/hand/thumb_0/thumb_1"]
+[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/thumb_0/thumb_1"]
 transform = Transform3D(1, 0, 0, 0, 0.352887, -0.935666, 0, 0.935666, 0.352887, 0.286444, 0, -0.397435)
 layers = 2
 mesh = SubResource("ArrayMesh_uqqdm")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="m9_bayonet_model" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand"]
+[node name="m9_bayonet_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand"]
 transform = Transform3D(0.271944, -0.451356, 0.746391, 0.826819, -0.115643, -0.371179, 0.277837, 0.785926, 0.374035, 0.136233, -0.097134, -0.449485)
 
-[node name="Sketchfab_model" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model"]
+[node name="Sketchfab_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
 
-[node name="3d59cfd0905141db91bf563f31bac6b3_fbx" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model"]
+[node name="3d59cfd0905141db91bf563f31bac6b3_fbx" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model"]
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
 
-[node name="RootNode" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model/3d59cfd0905141db91bf563f31bac6b3_fbx"]
+[node name="RootNode" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model/3d59cfd0905141db91bf563f31bac6b3_fbx"]
 
-[node name="m9_bayonet" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model/3d59cfd0905141db91bf563f31bac6b3_fbx/RootNode"]
+[node name="m9_bayonet" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model/3d59cfd0905141db91bf563f31bac6b3_fbx/RootNode"]
 transform = Transform3D(93.9693, -8.85213, -33.0366, 34.202, 24.321, 90.7673, 4.3895e-06, -96.5926, 25.8819, 0, 0, 0)
 
-[node name="m9_bayonet_m_m9_bayonet_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model/3d59cfd0905141db91bf563f31bac6b3_fbx/RootNode/m9_bayonet"]
+[node name="m9_bayonet_m_m9_bayonet_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/m9_bayonet_model/Sketchfab_model/3d59cfd0905141db91bf563f31bac6b3_fbx/RootNode/m9_bayonet"]
 layers = 2
 mesh = SubResource("ArrayMesh_nv3k6")
 skeleton = NodePath("")
 
-[node name="left_hand" type="Node3D" parent="WeaponsManager/WeaponRig/M9_bayonet"]
+[node name="left_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet"]
 
-[node name="hand" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand"]
+[node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand"]
 transform = Transform3D(0.0473754, -0.00133436, -0.00794211, -0.000993263, 0.0460609, -0.0136636, 0.00799194, 0.0136346, 0.0453819, -0.186772, -0.109221, -0.394467)
 layers = 2
 mesh = SubResource("ArrayMesh_rj55d")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand"]
+[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118854, 0.00119257)
 layers = 2
 mesh = SubResource("ArrayMesh_am5tx")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand"]
+[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.993064, 0.117572, 0, -0.117572, 0.993064, 0.635515, 0, -1.8433)
 layers = 2
 mesh = SubResource("ArrayMesh_cxccb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/index_0"]
+[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/index_0"]
 transform = Transform3D(1, 0, 0, 0, 0.988008, 0.1544, 0, -0.1544, 0.988008, 0, 0, -0.520542)
 layers = 2
 mesh = SubResource("ArrayMesh_p62h3")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/index_0/index_1"]
+[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/index_0/index_1"]
 transform = Transform3D(1, 0, 0, 0, 0.996084, 0.0884075, 0, -0.0884075, 0.996084, 0, 0, -0.496836)
 layers = 2
 mesh = SubResource("ArrayMesh_qvpdq")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand"]
+[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.986875, 0.161483, 0, -0.161483, 0.986875, 0.219422, 0, -1.96367)
 layers = 2
 mesh = SubResource("ArrayMesh_3oqi7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/middle_0"]
+[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/middle_0"]
 transform = Transform3D(1, 0, 0, 0, 0.951803, 0.306709, 0, -0.306709, 0.951803, 0, 0, -0.595449)
 layers = 2
 mesh = SubResource("ArrayMesh_jc8sy")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/middle_0/middle_1"]
+[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/middle_0/middle_1"]
 transform = Transform3D(1, 0, 0, 0, 0.98947, 0.144736, 0, -0.144736, 0.98947, 0, 0, -0.576577)
 layers = 2
 mesh = SubResource("ArrayMesh_tmcws")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand"]
+[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.86092, 0.508741, 0, -0.508741, 0.86092, -0.636916, 0, -1.87594)
 layers = 2
 mesh = SubResource("ArrayMesh_rlit0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/pinky_0"]
+[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/pinky_0"]
 transform = Transform3D(1, 0, 0, 0, 0.692936, 0.720999, 0, -0.720999, 0.692936, 0, 0, -0.508631)
 layers = 2
 mesh = SubResource("ArrayMesh_gdsd2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/pinky_0/pinky_1"]
+[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/pinky_0/pinky_1"]
 transform = Transform3D(1, 0, 0, 0, 0.702004, 0.712173, 0, -0.712173, 0.702004, 0, 0, -0.484157)
 layers = 2
 mesh = SubResource("ArrayMesh_jacxp")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand"]
+[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.992319, 0.123705, 0, -0.123705, 0.992319, -0.22161, 0, -1.94957)
 layers = 2
 mesh = SubResource("ArrayMesh_ues5w")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/ring_0"]
+[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/ring_0"]
 transform = Transform3D(1, 0, 0, 0, 0.893724, 0.448617, 0, -0.448617, 0.893724, 0, 0, -0.578411)
 layers = 2
 mesh = SubResource("ArrayMesh_rycoj")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/ring_0/ring_1"]
+[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/ring_0/ring_1"]
 transform = Transform3D(1, 0, 0, 0, 0.798405, 0.602122, 0, -0.602122, 0.798405, 0, 0, -0.558439)
 layers = 2
 mesh = SubResource("ArrayMesh_3cuah")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand"]
+[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand"]
 transform = Transform3D(0.948432, 0.733003, 0.00174809, -0.733005, 0.948429, 0.0025556, 0.000179637, -0.00309106, 1.19867, 0.71163, -0.0538707, -0.365427)
 layers = 2
 mesh = SubResource("ArrayMesh_3073y")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/thumb_0"]
+[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/thumb_0"]
 transform = Transform3D(0.944777, 0, 0.327713, 0, 1, 0, -0.327713, 0, 0.944777, 0.418848, 0, -0.541475)
 layers = 2
 mesh = SubResource("ArrayMesh_1maqd")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/M9_bayonet/left_hand/hand/thumb_0/thumb_1"]
+[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/thumb_0/thumb_1"]
 transform = Transform3D(0.973339, 0, 0.22937, 0, 1, 0, -0.22937, 0, 0.973339, 0.286444, 0, -0.397435)
 layers = 2
 mesh = SubResource("ArrayMesh_uqqdm")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="m1911_handgun" type="Node3D" parent="WeaponsManager/WeaponRig"]
+[node name="m1911_handgun" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig"]
 visible = false
 
-[node name="m1911_model" type="Node3D" parent="WeaponsManager/WeaponRig/m1911_handgun"]
-transform = Transform3D(-6.7482e-09, 0, 0.154381, 0, 0.154381, 0, -0.154381, 0, -6.7482e-09, 0.172406, -0.17604, -0.733886)
+[node name="m1911_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun"]
+transform = Transform3D(-6.74821e-09, 0, 0.154381, 0, 0.154381, 0, -0.154381, 0, -6.74821e-09, 0.172406, -0.17604, -0.733886)
 
-[node name="Sketchfab_model" type="Node3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model"]
+[node name="Sketchfab_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
 
-[node name="Handgun_obj_obj_cleaner_materialmerger_gles" type="Node3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model"]
+[node name="Handgun_obj_obj_cleaner_materialmerger_gles" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model"]
 
-[node name="Object_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_rp68e")
 skeleton = NodePath("")
 
-[node name="Object_3" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_3" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_qn7bk")
 skeleton = NodePath("")
 
-[node name="Object_4" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_4" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_22u2d")
 skeleton = NodePath("")
 
-[node name="Object_5" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_5" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_c2jcc")
 skeleton = NodePath("")
 
-[node name="Object_6" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_6" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_lgajb")
 skeleton = NodePath("")
 
-[node name="Object_7" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_7" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_nxwv4")
 skeleton = NodePath("")
 
-[node name="Object_8" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
+[node name="Object_8" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model/Sketchfab_model/Handgun_obj_obj_cleaner_materialmerger_gles"]
 layers = 2
 mesh = SubResource("ArrayMesh_o5nl6")
 skeleton = NodePath("")
 
-[node name="right_hand" type="Node3D" parent="WeaponsManager/WeaponRig/m1911_handgun"]
+[node name="right_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun"]
 transform = Transform3D(0.00223086, -0.0676045, 0, 0.0676045, 0.00223086, 0, 0, 0, 0.0676413, 0.209048, -0.194218, -0.583498)
 
-[node name="hand" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand"]
+[node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand"]
 transform = Transform3D(0.995742, -0.0921794, 0, 0.0921794, 0.995742, 0, 0, 0, 1, -6.98492e-10, 0.212149, 0.59333)
 layers = 2
 mesh = SubResource("ArrayMesh_3pfk7")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand"]
+[node name="arm_lower" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118854, 0.00119257)
 layers = 2
 mesh = SubResource("ArrayMesh_s3pdj")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand"]
+[node name="index_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.999907, 0.0136655, 0, -0.0136655, 0.999907, 0.635515, 0, -1.8433)
 layers = 2
 mesh = SubResource("ArrayMesh_lauys")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/index_0"]
+[node name="index_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/index_0"]
 transform = Transform3D(1, 0, 0, 0, 0.48426, -0.874924, 0, 0.874924, 0.48426, 0, 0, -0.520542)
 layers = 2
 mesh = SubResource("ArrayMesh_fcq6m")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/index_0/index_1"]
+[node name="index_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/index_0/index_1"]
 transform = Transform3D(1, 0, 0, 0, -0.0595504, -0.998225, 0, 0.998225, -0.0595504, 0, 0, -0.496836)
 layers = 2
 mesh = SubResource("ArrayMesh_u6j4t")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand"]
+[node name="middle_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.252407, -0.967621, 0, 0.967621, 0.252407, 0.219422, 0, -1.96367)
 layers = 2
 mesh = SubResource("ArrayMesh_e7lrw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/middle_0"]
+[node name="middle_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/middle_0"]
 transform = Transform3D(1, 0, 0, 0, 0.22575, -0.974185, 0, 0.974185, 0.22575, 0, 0, -0.595449)
 layers = 2
 mesh = SubResource("ArrayMesh_u6hm8")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/middle_0/middle_1"]
+[node name="middle_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/middle_0/middle_1"]
 transform = Transform3D(1, 0, 0, 0, 0.715327, -0.69879, 0, 0.69879, 0.715327, 0, 0, -0.576577)
 layers = 2
 mesh = SubResource("ArrayMesh_1k11k")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand"]
+[node name="pinky_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, -0.0131245, -0.999914, 0, 0.999914, -0.0131245, -0.412792, 4.65621e-10, -1.87594)
 layers = 2
 mesh = SubResource("ArrayMesh_aj42c")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/pinky_0"]
+[node name="pinky_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/pinky_0"]
 transform = Transform3D(1, 0, 0, 0, 0.502084, -0.864819, 0, 0.864819, 0.502084, 0, 0, -0.508631)
 layers = 2
 mesh = SubResource("ArrayMesh_8vpnh")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/pinky_0/pinky_1"]
+[node name="pinky_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/pinky_0/pinky_1"]
 transform = Transform3D(1, 0, 0, 0, 0.762939, -0.64647, 0, 0.64647, 0.762939, 0, 0, -0.484157)
 layers = 2
 mesh = SubResource("ArrayMesh_fhtxu")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand"]
+[node name="ring_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand"]
 transform = Transform3D(1, 0, 0, 0, 0.0427998, -0.999084, 0, 0.999084, 0.0427998, -0.0930181, -4.65235e-10, -1.94957)
 layers = 2
 mesh = SubResource("ArrayMesh_7leq0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/ring_0"]
+[node name="ring_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/ring_0"]
 transform = Transform3D(1, 0, 0, 0, 0.305679, -0.952135, 0, 0.952135, 0.305679, 0, 0, -0.578411)
 layers = 2
 mesh = SubResource("ArrayMesh_3r8lq")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/ring_0/ring_1"]
+[node name="ring_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/ring_0/ring_1"]
 transform = Transform3D(1, 0, 0, 0, 0.872018, -0.489474, 0, 0.489474, 0.872018, 0, 0, -0.558439)
 layers = 2
 mesh = SubResource("ArrayMesh_fq4cl")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand"]
+[node name="thumb_0" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand"]
 transform = Transform3D(0.260267, -1.16032, -0.150806, 1.15242, 0.280939, -0.172683, 0.202503, -0.107492, 1.17654, 0.442672, 0.188694, -0.370761)
 layers = 2
 mesh = SubResource("ArrayMesh_ihqnw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/thumb_0"]
+[node name="thumb_1" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/thumb_0"]
 transform = Transform3D(0.807277, -0.220242, 0.547538, 0.241346, 0.969834, 0.0342713, -0.538568, 0.10448, 0.836079, 0.418848, 0, -0.541475)
 layers = 2
 mesh = SubResource("ArrayMesh_x5oip")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/WeaponRig/m1911_handgun/right_hand/hand/thumb_0/thumb_1"]
+[node name="thumb_2" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/thumb_0/thumb_1"]
 transform = Transform3D(0.665139, 0, 0.746719, 0, 1, 0, -0.746719, 0, 0.665139, 0.286444, 0, -0.397435)
 layers = 2
 mesh = SubResource("ArrayMesh_4u135")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponsManager/WeaponRig"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponsManager/RecoilPosition/WeaponRig"]
 root_node = NodePath("../AK47")
 libraries = {
 "": SubResource("AnimationLibrary_0023g")
 }
 
-[connection signal="animation_finished" from="WeaponsManager/WeaponRig/AnimationPlayer" to="WeaponsManager" method="_on_animation_player_animation_finished"]
+[node name="muzzle_flash_position" type="Node3D" parent="WeaponsManager/RecoilPosition"]
+
+[node name="ak_muzzle_flash" type="Node3D" parent="WeaponsManager/RecoilPosition/muzzle_flash_position"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0904032, -0.0537382, -0.863611)
+
+[node name="m1911_muzzle_flash" type="Node3D" parent="WeaponsManager/RecoilPosition/muzzle_flash_position"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168404, -0.0975445, -0.952183)
+
+[connection signal="animation_finished" from="WeaponsManager/RecoilPosition/WeaponRig/AnimationPlayer" to="WeaponsManager" method="_on_animation_player_animation_finished"]

@@ -5,12 +5,23 @@
 [resource]
 script = ExtResource("1_46alg")
 weaponName = "M9 Bayonet"
-animationFire = "m9_bayonet_fire"
+animationFire = "m9_bayonet_melee"
 animationPullout = "m9_bayonet_pullout"
 animationPutaway = "m9_bayonet_putaway"
+animationMelee = ""
 fireRate = 0.0
 autoFire = false
 semiAuto = false
+push = false
 primaryWeapon = false
 secondaryWeapon = false
 meleeWeapon = true
+shotCount = 0
+damage = 0
+range = 2
+recoilAmount = Vector3(0, 0, 0)
+snapAmount = 0.0
+speed = 0.0
+recoilAmountPhysics = Vector3(0, 0, 0)
+snapAmountPhysics = 0.0
+speedPhysics = 0.0

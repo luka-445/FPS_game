@@ -187,7 +187,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CameraController/Recoil/MainCamera:position:x")
+tracks/6/path = NodePath("CameraController/MainCamera:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -198,7 +198,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CameraController/Recoil/MainCamera:position:y")
+tracks/7/path = NodePath("CameraController/MainCamera:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -209,7 +209,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CameraController/Recoil/MainCamera:position:z")
+tracks/8/path = NodePath("CameraController/MainCamera:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -236,7 +236,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CameraController/Recoil/MainCamera:position:x")
+tracks/0/path = NodePath("CameraController/MainCamera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -247,7 +247,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraController/Recoil/MainCamera:position:y")
+tracks/1/path = NodePath("CameraController/MainCamera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -258,7 +258,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CameraController/Recoil/MainCamera:position:z")
+tracks/2/path = NodePath("CameraController/MainCamera:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -318,9 +318,10 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a7305"]
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "CAMERA_RECOIL", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
 script = ExtResource("1_hysve")
-CAMERA_CONTROLLER = NodePath("CameraController/Recoil/MainCamera")
+CAMERA_CONTROLLER = NodePath("CameraController/MainCamera")
+CAMERA_RECOIL = NodePath("CameraController/Recoil/RaycastCamera")
 VIEWPORT_CAMERA = NodePath("WeaponViewport/SubViewport/ViewModel")
 WEAPON_SUB_VIEWPORT = NodePath("WeaponViewport/SubViewport")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
@@ -336,18 +337,17 @@ mesh = SubResource("CapsuleMesh_wkxbf")
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="Recoil" type="Node3D" parent="CameraController" node_paths=PackedStringArray("weapon")]
-script = ExtResource("13_ckp8k")
-recoil_amount = Vector3(0.1, 0.05, 0)
-snap_amount = 5.0
-speed = 4.0
-weapon = NodePath("../../WeaponViewport/SubViewport/ViewModel/WeaponsManager")
-
-[node name="MainCamera" type="Camera3D" parent="CameraController/Recoil"]
+[node name="MainCamera" type="Camera3D" parent="CameraController"]
 cull_mask = 1048573
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Recoil/MainCamera"]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/MainCamera"]
 update_mode = 1
+
+[node name="Recoil" type="Node3D" parent="CameraController" node_paths=PackedStringArray("weapon")]
+script = ExtResource("13_ckp8k")
+weapon = NodePath("../../WeaponViewport/SubViewport/ViewModel/WeaponsManager")
+
+[node name="RaycastCamera" type="Camera3D" parent="CameraController/Recoil"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -453,6 +453,273 @@ render_target_update_mode = 4
 
 [node name="ViewModel" parent="WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
 cull_mask = 1047554
+
+[node name="ak47_model" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47" index="0"]
+transform = Transform3D(-1.8922e-08, 0, 0.432885, 0, 0.432885, 0, -0.432885, 0, -1.8922e-08, -0.0721286, -0.15859, 1.62197)
+
+[node name="hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand" index="0"]
+surface_material_override/0 = null
+
+[node name="arm_lower" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand" index="0"]
+surface_material_override/0 = null
+
+[node name="index_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand" index="1"]
+surface_material_override/0 = null
+
+[node name="index_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/index_0" index="0"]
+surface_material_override/0 = null
+
+[node name="index_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/index_0/index_1" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand" index="2"]
+surface_material_override/0 = null
+
+[node name="middle_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/middle_0" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/middle_0/middle_1" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand" index="3"]
+surface_material_override/0 = null
+
+[node name="pinky_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/pinky_0" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/pinky_0/pinky_1" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand" index="4"]
+surface_material_override/0 = null
+
+[node name="ring_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/ring_0" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/ring_0/ring_1" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand" index="5"]
+surface_material_override/0 = null
+
+[node name="thumb_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/thumb_0" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand/hand/thumb_0/thumb_1" index="0"]
+surface_material_override/0 = null
+
+[node name="right_hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47" index="2"]
+transform = Transform3D(-0.00102579, -0.0383547, 0, 0.0383547, -0.00102579, 0, 0, 0, 0.0383684, 0.0202218, -0.152156, 0.0290738)
+
+[node name="hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand" index="0"]
+surface_material_override/0 = null
+
+[node name="arm_lower" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand" index="0"]
+surface_material_override/0 = null
+
+[node name="index_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand" index="1"]
+surface_material_override/0 = null
+
+[node name="index_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/index_0" index="0"]
+surface_material_override/0 = null
+
+[node name="index_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/index_0/index_1" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand" index="2"]
+surface_material_override/0 = null
+
+[node name="middle_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/middle_0" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/middle_0/middle_1" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand" index="3"]
+surface_material_override/0 = null
+
+[node name="pinky_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/pinky_0" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/pinky_0/pinky_1" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand" index="4"]
+surface_material_override/0 = null
+
+[node name="ring_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/ring_0" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/ring_0/ring_1" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand" index="5"]
+surface_material_override/0 = null
+
+[node name="thumb_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/thumb_0" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand/hand/thumb_0/thumb_1" index="0"]
+surface_material_override/0 = null
+
+[node name="hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand" index="0"]
+surface_material_override/0 = null
+
+[node name="arm_lower" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand" index="0"]
+surface_material_override/0 = null
+
+[node name="index_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand" index="1"]
+surface_material_override/0 = null
+
+[node name="index_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/index_0" index="0"]
+surface_material_override/0 = null
+
+[node name="index_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/index_0/index_1" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand" index="2"]
+surface_material_override/0 = null
+
+[node name="middle_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/middle_0" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/middle_0/middle_1" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand" index="3"]
+surface_material_override/0 = null
+
+[node name="pinky_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/pinky_0" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/pinky_0/pinky_1" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand" index="4"]
+surface_material_override/0 = null
+
+[node name="ring_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/ring_0" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/ring_0/ring_1" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand" index="5"]
+surface_material_override/0 = null
+
+[node name="thumb_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/thumb_0" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/right_hand/hand/thumb_0/thumb_1" index="0"]
+surface_material_override/0 = null
+
+[node name="hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand" index="0"]
+surface_material_override/0 = null
+
+[node name="arm_lower" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand" index="0"]
+surface_material_override/0 = null
+
+[node name="index_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand" index="1"]
+surface_material_override/0 = null
+
+[node name="index_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/index_0" index="0"]
+surface_material_override/0 = null
+
+[node name="index_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/index_0/index_1" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand" index="2"]
+surface_material_override/0 = null
+
+[node name="middle_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/middle_0" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/middle_0/middle_1" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand" index="3"]
+surface_material_override/0 = null
+
+[node name="pinky_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/pinky_0" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/pinky_0/pinky_1" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand" index="4"]
+surface_material_override/0 = null
+
+[node name="ring_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/ring_0" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/ring_0/ring_1" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand" index="5"]
+surface_material_override/0 = null
+
+[node name="thumb_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/thumb_0" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/M9_bayonet/left_hand/hand/thumb_0/thumb_1" index="0"]
+surface_material_override/0 = null
+
+[node name="m1911_model" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun" index="0"]
+transform = Transform3D(-6.74821e-09, 0, 0.154381, 0, 0.154381, 0, -0.154381, 0, -6.74821e-09, 0.172406, -0.17604, -0.733886)
+
+[node name="right_hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun" index="1"]
+transform = Transform3D(0.00223086, -0.0676045, 0, 0.0676045, 0.00223086, 0, 0, 0, 0.0676413, 0.209048, -0.194218, -0.583498)
+
+[node name="hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand" index="0"]
+surface_material_override/0 = null
+
+[node name="arm_lower" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand" index="0"]
+surface_material_override/0 = null
+
+[node name="index_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand" index="1"]
+surface_material_override/0 = null
+
+[node name="index_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/index_0" index="0"]
+surface_material_override/0 = null
+
+[node name="index_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/index_0/index_1" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand" index="2"]
+surface_material_override/0 = null
+
+[node name="middle_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/middle_0" index="0"]
+surface_material_override/0 = null
+
+[node name="middle_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/middle_0/middle_1" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand" index="3"]
+surface_material_override/0 = null
+
+[node name="pinky_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/pinky_0" index="0"]
+surface_material_override/0 = null
+
+[node name="pinky_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/pinky_0/pinky_1" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand" index="4"]
+surface_material_override/0 = null
+
+[node name="ring_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/ring_0" index="0"]
+surface_material_override/0 = null
+
+[node name="ring_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/ring_0/ring_1" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_0" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand" index="5"]
+surface_material_override/0 = null
+
+[node name="thumb_1" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/thumb_0" index="0"]
+surface_material_override/0 = null
+
+[node name="thumb_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/thumb_0/thumb_1" index="0"]
+surface_material_override/0 = null
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 

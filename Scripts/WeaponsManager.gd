@@ -3,10 +3,15 @@ class_name WeaponsManager
 extends Node3D
 
 signal weaponFired
+@onready var ak_muzzle_flash = %ak_muzzle_flash
+@onready var m1911_muzzle_flash = %ak_muzzle_flash
+
 
 @export var ANIMATION_PLAYER : AnimationPlayer
 var weaponIndicator : int = 0 # index of weapon in weaponStack.
 var currentWeapon : Weapon
+var currentWeaponTotalAmmo : int
+var currentWeaponAmmo : int
 var _nextWeapon : String
 var isAttacking : bool = false
 var bulletDecal = preload("res://Scenes/bullet_hole.tscn")
@@ -16,7 +21,7 @@ var weaponDict = {} # Dictionary of all weapon resources.
 # index 1 holds secondary weapon.
 # index 2 holds melee weapon.
 var weaponStack = []
-
+var muzzleFlash = preload("res://Scenes/muzzle_flash.tscn")
 # auxilary array used to build dictionary.
 @export var weaponResourcesAux: Array[Weapon]
 
@@ -26,10 +31,15 @@ var weaponStack = []
 @export var startWeapons: Array[String]
 
 var bullets = 30
+var timeToFire : float
+var nextTimeToFire : float = 0
 
 func _ready():
+	
 	# Initilizes start of weapon state machine.
 	InitWeapon()
+	
+	
 
 func _input(event):
 	if event.is_action_pressed("attack"):
@@ -38,6 +48,8 @@ func _input(event):
 	
 	if event.is_action_released("attack"):
 		isAttacking = false
+		
+	
 	
 	# pull out primary weapon.
 	if event.is_action_pressed("primaryWeapon"):
@@ -51,6 +63,9 @@ func _input(event):
 	if event.is_action_pressed("meleeWeapon"):
 		exit(weaponStack[2])
 
+func _process(delta):
+	nextTimeToFire = delta + 1 / currentWeapon.fireRate
+	
 func _physics_process(delta):
 	pass
 
@@ -71,8 +86,32 @@ func InitWeapon():
 
 # call when entering into next weapon.
 func enter():
+	# Play pullout animation
 	ANIMATION_PLAYER.queue(currentWeapon.animationPullout)
-
+	
+	# Set ammo count
+	currentWeaponAmmo = currentWeapon.shotCount
+	currentWeaponTotalAmmo = currentWeapon.shotCount
+	timeToFire = 1 / (currentWeapon.fireRate / 60)
+	
+	
+	Global.debug.AddProperty("Ammo", currentWeaponTotalAmmo, 4)
+	
+	# set weapon recoil amount
+	Global.recoil.recoil_amount = currentWeapon.recoilAmount
+	Global.recoil.snap_amount = currentWeapon.snapAmount
+	Global.recoil.speed = currentWeapon.speed
+	Global.debug.AddProperty("recoilAmount", currentWeapon.recoilAmount, 5)
+	Global.debug.AddProperty("snapAmount", currentWeapon.snapAmount, 6)
+	Global.debug.AddProperty("recoil_speed", currentWeapon.speed, 7)
+	
+	# set weapon recoil physics amount
+	Global.recoil_physics.recoil_amount = currentWeapon.recoilAmountPhysics
+	Global.recoil_physics.snap_amount = currentWeapon.snapAmountPhysics
+	Global.recoil_physics.speed = currentWeapon.speedPhysics
+	
+	# Set weapon muzzle flash position
+	
 # Call exit before changing weapon.
 func exit(nextWeapon):
 	# if next is current than don't switch.
@@ -100,14 +139,33 @@ func _on_animation_player_animation_finished(anim_name):
 	
 	if anim_name == currentWeapon.animationFire and currentWeapon.autoFire == true:
 		if isAttacking:
+			await get_tree().create_timer(nextTimeToFire).timeout
 			Attack()
+	
 
 # Attack: function creates a raycast when attack input is read.
 func Attack() -> void:
+	Global.debug.AddProperty("Ammo", currentWeaponAmmo, 4)
+	
+	if currentWeaponAmmo <= 0:
+		print("gun empty")
+		currentWeaponAmmo = currentWeaponTotalAmmo
+		Global.debug.AddProperty("Ammo", currentWeaponAmmo, 4)
+	
 	ANIMATION_PLAYER.play(currentWeapon.animationFire)
-	weaponFired.emit()
+	var flash = muzzleFlash.instantiate()
+	if currentWeapon.weaponName == "AK-47":
+		get_node("RecoilPosition/muzzle_flash_position/ak_muzzle_flash").add_child(flash)
+		flash.position = ak_muzzle_flash.position
+	
+	if currentWeapon.weaponName == "1911":
+		get_node("RecoilPosition/muzzle_flash_position/m1911_muzzle_flash").add_child(flash)
+		flash.position = m1911_muzzle_flash.position
+	
+	currentWeaponAmmo -= 1
+	EventBus.weaponFired.emit()
 	# get fps controller camera reference.
-	var camera = Global.player.CAMERA_CONTROLLER
+	var camera = Global.player.CAMERA_RECOIL
 	# Get space state of camera.
 	var spaceState = get_world_3d().direct_space_state
 	# get origin or center of screen
@@ -115,19 +173,13 @@ func Attack() -> void:
 	# get origin point for array, i.e starting point of raycast.
 	var origin = camera.project_ray_origin(centerOfScreen)
 	# get endpoint of raycast.
-	var end = origin + camera.project_ray_normal(centerOfScreen) * 1000
+	var end = origin + camera.project_ray_normal(centerOfScreen) * currentWeapon.range
 	# create raycast.
 	var query =  PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_bodies = true
 	var result = spaceState.intersect_ray(query)
-	if result:
+	if result and !currentWeapon.meleeWeapon:
 		bulletHole(result.get("position"), result.get("normal"))
-	
-	bullets -= 1;
-	
-	if bullets == 0:
-		print("gun empty")
-		bullets = 30
 
 # bulletHole: This function spawns bullet decal when raycast collides with world object.
 # Parameters:
@@ -137,6 +189,7 @@ func Attack() -> void:
 #                     the normal dictates the perpendicular aspect, needed for properly rotating 
 #                     the bullet hole decal. 
 func bulletHole(position : Vector3, normal : Vector3 ) -> void:
+
 	# Create instance of bullet hole scene and add it to current scene root.
 	var instance = bulletDecal.instantiate()
 	get_tree().root.add_child(instance)
@@ -156,3 +209,6 @@ func bulletHole(position : Vector3, normal : Vector3 ) -> void:
 	fade.tween_property(instance, "modulate:a", 0, 1.5)
 	await get_tree().create_timer(1.5).timeout
 	instance.queue_free()
+
+func knifeLine(position : Vector3, normal : Vector3 ) -> void:
+	pass

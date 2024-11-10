@@ -10,7 +10,7 @@ extends CharacterBody3D
 @export var TILT_LOWER_LIMIT : float = deg_to_rad(-90.0)
 @export_subgroup("Camera nodes")
 @export var CAMERA_CONTROLLER : Camera3D
-#@export var CAMERA_MAIN : Camera3D
+@export var CAMERA_RECOIL : Camera3D
 @export var VIEWPORT_CAMERA : Camera3D
 @export var WEAPON_SUB_VIEWPORT : SubViewport
 @export_category("Other")
@@ -66,7 +66,7 @@ func _unhandled_input(event):
 func UpdateCamera(delta):
 	# Set weapon viewport camera to same position as main camera.
 	VIEWPORT_CAMERA.global_transform = CAMERA_CONTROLLER.global_transform
-	
+	CAMERA_RECOIL.global_transform = CAMERA_CONTROLLER.global_transform
 	# Get mouse x and y rotation, and clamp x to tilt limits.
 	
 	mouseRotation.x += tiltInput * delta
