@@ -4506,6 +4506,82 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-0.00174533, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6dark"]
+resource_name = "ak47_melee"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ak47_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0721286, -0.15859, 1.62197), Vector3(1.05167, 0.604667, -1.83052), Vector3(1.05167, 0.604667, -1.83052), Vector3(-0.0721286, -0.15859, 1.62197)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ak47_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-1.05099, 0.0359526, -2.2508), Vector3(-1.05099, 0.0359527, -2.27616), Vector3(-1.05099, 0.0359527, -2.27616), Vector3(0, 1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("left_hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.00141227, -0.137364, -0.310467), Vector3(-0.00141227, -0.137364, -0.310467)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("left_hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0943895, -0.202945, 2.64131), Vector3(-0.953696, 0.618197, 2.17097), Vector3(-0.953696, 0.618197, 2.17097), Vector3(-0.0943895, -0.202945, 2.64131)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("right_hand:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0202218, -0.152156, 0.0290738), Vector3(0.229997, -0.152399, -0.36774), Vector3(0.206436, -0.135479, -0.384528), Vector3(0.206436, -0.135479, -0.384528), Vector3(0.0202218, -0.152156, 0.0290738)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("right_hand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.59753), Vector3(0.529205, 0.951713, -2.55804), Vector3(0.529205, 0.951713, -2.55804), Vector3(0, 0, 1.59753)]
+}
+
 [sub_resource type="Animation" id="Animation_j78d3"]
 resource_name = "ak47_pullout"
 length = 0.4
@@ -4590,6 +4666,58 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.00698132, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_11qlc"]
+resource_name = "m1911_melee"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../m1911_handgun/m1911_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.172406, -0.17604, -0.733886), Vector3(0.173479, -0.0863173, -0.793613), Vector3(0.173448, -0.0927384, -0.804877), Vector3(0.172406, -0.17604, -0.733886)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../m1911_handgun/m1911_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-0.0099946, -1.57374, -1.05268), Vector3(-0.0470629, -1.50858, -1.41858), Vector3(0, 1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../m1911_handgun/right_hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.209048, -0.194218, -0.583498), Vector3(0.211424, -0.122229, -0.659455), Vector3(0.211315, -0.125531, -0.621456), Vector3(0.209048, -0.194218, -0.583498)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../m1911_handgun/right_hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.53781), Vector3(0.0866781, -0.00286745, 1.53769), Vector3(0.0866781, -0.00286745, 1.53769), Vector3(0, 0, 1.53781)]
+}
+
 [sub_resource type="Animation" id="Animation_db1ad"]
 resource_name = "m1911_pullout"
 length = 0.4
@@ -4637,62 +4765,6 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("../m1911_handgun:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_bcgag"]
-resource_name = "m9_bayonet_pullout"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../M9_bayonet:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.592173, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../M9_bayonet:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_2qh28"]
-resource_name = "m9_bayonet_putaway"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../M9_bayonet:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.592173, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../M9_bayonet:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4754,132 +4826,60 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -0.55107, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_6dark"]
-resource_name = "ak47_melee"
+[sub_resource type="Animation" id="Animation_bcgag"]
+resource_name = "m9_bayonet_pullout"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ak47_model:position")
+tracks/0/path = NodePath("../M9_bayonet:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.0721286, -0.15859, 1.62197), Vector3(1.05167, 0.604667, -1.83052), Vector3(1.05167, 0.604667, -1.83052), Vector3(-0.0721286, -0.15859, 1.62197)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ak47_model:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.366667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(-1.05099, 0.0359526, -2.2508), Vector3(-1.05099, 0.0359527, -2.27616), Vector3(-1.05099, 0.0359527, -2.27616), Vector3(0, 1.5708, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("left_hand:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.00141227, -0.137364, -0.310467), Vector3(-0.00141227, -0.137364, -0.310467)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("left_hand:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.433333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.0943895, -0.202945, 2.64131), Vector3(-0.953696, 0.618197, 2.17097), Vector3(-0.953696, 0.618197, 2.17097), Vector3(-0.0943895, -0.202945, 2.64131)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("right_hand:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.366667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.0202218, -0.152156, 0.0290738), Vector3(0.229997, -0.152399, -0.36774), Vector3(0.206436, -0.135479, -0.384528), Vector3(0.206436, -0.135479, -0.384528), Vector3(0.0202218, -0.152156, 0.0290738)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("right_hand:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.59753), Vector3(0.529205, 0.951713, -2.55804), Vector3(0.529205, 0.951713, -2.55804), Vector3(0, 0, 1.59753)]
-}
-
-[sub_resource type="Animation" id="Animation_11qlc"]
-resource_name = "m1911_melee"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../m1911_handgun/m1911_model:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.172406, -0.17604, -0.733886), Vector3(0.173479, -0.0863173, -0.793613), Vector3(0.173448, -0.0927384, -0.804877), Vector3(0.172406, -0.17604, -0.733886)]
+"values": [Vector3(-0.592173, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../m1911_handgun/m1911_model:rotation")
+tracks/1/path = NodePath("../M9_bayonet:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(-0.0099946, -1.57374, -1.05268), Vector3(-0.0470629, -1.50858, -1.41858), Vector3(0, 1.5708, 0)]
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../m1911_handgun/right_hand:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+
+[sub_resource type="Animation" id="Animation_2qh28"]
+resource_name = "m9_bayonet_putaway"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../M9_bayonet:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.209048, -0.194218, -0.583498), Vector3(0.211424, -0.122229, -0.659455), Vector3(0.211315, -0.125531, -0.621456), Vector3(0.209048, -0.194218, -0.583498)]
+"values": [Vector3(0, 0, 0), Vector3(-0.592173, 0, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../m1911_handgun/right_hand:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.53781), Vector3(0.0866781, -0.00286745, 1.53769), Vector3(0.0866781, -0.00286745, 1.53769), Vector3(0, 0, 1.53781)]
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../M9_bayonet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0023g"]
@@ -4920,7 +4920,7 @@ weapon = NodePath("..")
 visible = false
 
 [node name="ak47_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47"]
-transform = Transform3D(-1.8922e-08, 0, 0.432885, 0, 0.432885, 0, -0.432885, 0, -1.8922e-08, -0.0721286, -0.15859, 1.62197)
+transform = Transform3D(-1.56704e-06, 0, 0.432885, 0, 0.432885, 0, -0.432885, 0, -1.56704e-06, -0.0721286, -0.15859, 1.62197)
 
 [node name="ak47_local_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/ak47_model"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
@@ -5454,7 +5454,7 @@ mesh = SubResource("ArrayMesh_jo0ih")
 skeleton = NodePath("")
 
 [node name="left_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47"]
-transform = Transform3D(-0.0278988, -0.0159619, -0.0065835, 0.0156679, -0.0286605, 0.00309228, -0.00725533, -0.00051444, 0.0319932, -0.00141227, -0.137364, -0.310467)
+transform = Transform3D(-0.0278988, -0.0159618, -0.00658349, 0.0156678, -0.0286606, 0.00309229, -0.00725533, -0.000514417, 0.0319932, -0.00141227, -0.137364, -0.310467)
 
 [node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand"]
 transform = Transform3D(1.15612, 0, 0, 0, 1.15612, 0, 0, 0, 1.15612, -0.0644766, -2.41036, -5.37298)
@@ -5576,7 +5576,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_vjfmm")
 
 [node name="right_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47"]
-transform = Transform3D(-0.00102579, -0.0383547, 0, 0.0383547, -0.00102579, 0, 0, 0, 0.0383684, 0.0202218, -0.152156, 0.0290738)
+transform = Transform3D(-0.00102561, -0.0383547, 0, 0.0383547, -0.00102561, 0, 0, 0, 0.0383684, 0.0202218, -0.152156, 0.0290738)
 
 [node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/AK47/right_hand"]
 transform = Transform3D(1.15612, 0, 0, 0, 1.15612, 0, 0, 0, 1.15612, -0.0644766, -2.41036, -5.37298)
@@ -5965,7 +5965,7 @@ surface_material_override/0 = ExtResource("4_vjfmm")
 visible = false
 
 [node name="m1911_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun"]
-transform = Transform3D(-6.74821e-09, 0, 0.154381, 0, 0.154381, 0, -0.154381, 0, -6.74821e-09, 0.172406, -0.17604, -0.733886)
+transform = Transform3D(-5.58858e-07, 0, 0.154381, 0, 0.154381, 0, -0.154381, 0, -5.58858e-07, 0.172406, -0.17604, -0.733886)
 
 [node name="Sketchfab_model" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/m1911_model"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
@@ -6008,7 +6008,7 @@ mesh = SubResource("ArrayMesh_o5nl6")
 skeleton = NodePath("")
 
 [node name="right_hand" type="Node3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun"]
-transform = Transform3D(0.00223086, -0.0676045, 0, 0.0676045, 0.00223086, 0, 0, 0, 0.0676413, 0.209048, -0.194218, -0.583498)
+transform = Transform3D(0.00223084, -0.0676045, 0, 0.0676045, 0.00223084, 0, 0, 0, 0.0676413, 0.209048, -0.194218, -0.583498)
 
 [node name="hand" type="MeshInstance3D" parent="WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand"]
 transform = Transform3D(0.995742, -0.0921794, 0, 0.0921794, 0.995742, 0, 0, 0, 1, -6.98492e-10, 0.212149, 0.59333)

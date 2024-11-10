@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_46alg")
 weaponName = "M9 Bayonet"
+weaponMuzzlePosition = Vector3(0, 0, 0)
 animationFire = "m9_bayonet_melee"
 animationPullout = "m9_bayonet_pullout"
 animationPutaway = "m9_bayonet_putaway"
