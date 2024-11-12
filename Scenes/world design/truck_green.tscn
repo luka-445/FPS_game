@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=4 uid="uid://dv4qf5xj8b3hn"]
+
+[ext_resource type="Texture2D" uid="uid://xinf4ho4nbof" path="res://Assets/models/vehicles/truck_green_truck_alien.png" id="1_6m8cv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak2cv"]
+resource_name = "truck_alien"
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("1_6m8cv")
+metallic = 0.35
+roughness = 0.5
+emission_enabled = true
+texture_filter = 1
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tyrxk"]
+_surfaces = [{
+"aabb": AABB(-0.415, 0, -0.8217, 0.83, 1.00596, 1.6434),
+"format": 34896613377,
+"index_count": 144,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIAAgAEAAUABQAAAAIAAAAFAAYABgAHAAAABwAIAAAACAABAAAACAAJAAEACQAKAAEACwAHAAYADAALAAYADQAMAAYADQAGAA4ADgAPAA0ABgAFAAQABAAQAAYADAARABIAEgALAAwADQAPABMAEwAUAA0AFQATAA8ADwAOABUADQAUABEAEQAMAA0AFwAWAAMAAwAYABcAAgADABYAAgAWABkABAACABkAEAAEABkAEAAZABIAEAASABEAEAARABQAFQAQABQAFAATABUABwALABIAEgAZAAcABgAQABUAFQAOAAYAFwAYAAoACgAJABcACgAYAAMAAwABAAoABwAZABYAFgAIAAcACAAWABcAFwAJAAgA"),
+"name": "truck_alien",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("//8AAFIgAAD//7gUUiAAAAAAAABSIAAAAAC4FFIgAAAAAAAAQuIAAP//AABC4gAA//+4FELiAAD/////tdgAAP/////5tQAA/////wAAAAD//7gUAAAAAP//gNI+5gAA//+A0u/rAAD//2zGlPQAAP//uBT//wAA//8YiP//AAAAALgUQuIAAAAAgNLv6wAAAACA0j7mAAAAABiI//8AAAAAbMaU9AAAAAC4FP//AAAAAP//+bUAAAAA//8AAAAAAAC4FAAAAAAAAP//tdgAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_67wxh"]
+resource_name = "truck_green_Mesh truck_green"
+_surfaces = [{
+"aabb": AABB(-0.415, 0, -0.8217, 0.83, 1.00596, 1.6434),
+"attribute_data": PackedByteArray("T45tvk+OZ7z8m22+/JtnvORzJ6tzeyer5HNDvHN7Q7z0BAVn9ATUY0clBWeMBps/VgybP0cl1GOqKps/qirUY0oEnEZXA5xG5wF4SAAA1GMAABFSj2aGvjpYhr6PZme8OlhnvF9VO6tfVUeqtWM7q7VjR6q1Y8yzX1XMs7VjIq1fVSKtX1Wdv7Vjnb9fVTurtWM7q1YMmz9HJdRjqiqbP6oq1GNHJQVnjAabP/QEBWf0BNRjSgScRlcDnEbnAXhIAADUYwAAEVKXX9arLlfWq5dfy6guV8uoVFjMv1RY07qqZsy/qmbTui2c+b5/jvm+LZz7p3+O+6dum/m6bpsjwMGN+brBjSPA7FaXq+xWRKgfX5erH19EqEoMAACQJQAASgwaG5AlGhs="),
+"format": 34896613399,
+"index_count": 144,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoACwAMAAoADAANAAoADAAOAA0ADgAPAA0AEAALAAkAEQAQAAkAEgARAAkAEgAJABMAEwAUABIAFwAVABYAFgAYABcAGwAZABoAGgAcABsAHwAdAB4AHgAgAB8AIQAeAB0AHQAiACEAHwAgACMAIwAkAB8AJwAlACYAJgAoACcAKQAmACUAKQAlACoAKwApACoALAArACoALAAqAC0ALAAtAC4ALAAuAC8AMAAsAC8ALwAxADAANAAyADMAMwA1ADQAOAA2ADcANwA5ADgAPAA6ADsAOwA9ADwAQAA+AD8APwBBAEAARABCAEMAQwBFAEQASABGAEcARwBJAEgA"),
+"material": SubResource("StandardMaterial3D_ak2cv"),
+"name": "truck_alien",
+"primitive": 3,
+"uv_scale": Vector4(6, 3.97556, 0, 0),
+"vertex_count": 74,
+"vertex_data": PackedByteArray("//8AAFIg/////7gUUiD//wAAAABSIP//AAC4FFIg//8AAAAAQuL/v///AABC4v+/AAAAAFIg/7///wAAUiD/v///AABC4v+///+4FELi/7///wAAUiD/v/////+12P+///////m1/7///7gUUiD/v/////8AAP+///+4FAAA/7///4DSPub/v///gNLv6/+///9sxpT0/7///7gU////v///GIj///+///8AAELiAIAAAAAAQuIAgP//uBRC4gCAAAC4FELiAIAAAIDS7+v/vwAAgNI+5v+///+A0u/r/7///4DSPub/v///GIj//+uFAAAYiP//64X//2zGlPSBlwAAbMaU9IGXAAC4FP//AID//7gU//8AgAAAgNLv6yyj//+A0u/rLKMAAP//+bUAAAAAuBRSIAAAAAD//wAAAAAAALgUAAAAAAAAAABSIAAAAAD//7XYAAAAAAAAQuIAAAAAuBRC4gAAAACA0j7mAAAAAIDS7+sAAAAAbMaU9AAAAAC4FP//AAAAABiI//8AAP//gNI+5m6SAACA0j7mbpL/////tdg2qQAA//+12DapAAC4FELi/78AALgU////v///uBRC4v+///+4FP///78AALgUAAD/////uBQAAP//AAD//wAA////////AAD//wAAuBQAAP//AAC4FFIg/////7gUAAD/////uBRSIP//AAD//7XYNqkAAP//+bX/v/////+12Dap//////m1/78AAP//+bVU1QAA//8AAFTV//////m1VNX/////AABU1f9/////f////3////9///8AAP9/AAD/fwAA/38AAP9//38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9///////9/////f////3////9/////f////3////9/////f/9/////f///////f////3//P/9//z//f/8//3//P/9//z//f/8//3//P/9/////v/8//3//P/9//z//f/8//3//P/9//v//f/7//3/+//9//v//fwAA/38AAP9/AAD/fwAA/3//f////3////9/////f////3//P/9//z//f/8//3//P/7//3/+//9//v//f/7//39U1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tyrxk")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xumig"]
+data = PackedVector3Array(-0.415, 0, -0.6142, 0.415, 0, -0.6142, 0.415, 0.0814, -0.6142, 0.415, 0.0814, -0.6142, -0.415, 0.0814, -0.6142, -0.415, 0, -0.6142, -0.415, 0, -0.6142, -0.415, 0, 0.6308, 0.415, 0, 0.6308, 0.415, 0, 0.6308, 0.415, 0, -0.6142, -0.415, 0, -0.6142, 0.415, 0, -0.6142, 0.415, 0, 0.6308, 0.415, 0.0814, 0.6308, 0.415, 0.0814, 0.6308, 0.415, 1.006, 0.5695, 0.415, 0, -0.6142, 0.415, 1.006, 0.5695, 0.415, 1.006, 0.3465, 0.415, 0, -0.6142, 0.415, 1.006, 0.3465, 0.415, 0.0814, -0.6142, 0.415, 0, -0.6142, 0.415, 1.006, 0.3465, 0.415, 1.006, -0.8217, 0.415, 0.0814, -0.6142, 0.415, 1.006, -0.8217, 0.415, 0.0814, -0.8217, 0.415, 0.0814, -0.6142, 0.415, 0.8272, 0.6564, 0.415, 1.006, 0.5695, 0.415, 0.0814, 0.6308, 0.415, 0.8272, 0.6929, 0.415, 0.8272, 0.6564, 0.415, 0.0814, 0.6308, 0.415, 0.7797, 0.7484, 0.415, 0.8272, 0.6929, 0.415, 0.0814, 0.6308, 0.415, 0.7797, 0.7484, 0.415, 0.0814, 0.6308, 0.415, 0.0814, 0.8217, 0.415, 0.0814, 0.8217, 0.415, 0.5348, 0.8217, 0.415, 0.7797, 0.7484, 0.415, 0.0814, 0.6308, 0.415, 0, 0.6308, -0.415, 0, 0.6308, -0.415, 0, 0.6308, -0.415, 0.0814, 0.6308, 0.415, 0.0814, 0.6308, 0.415, 0.8272, 0.6929, -0.415, 0.8272, 0.6929, -0.415, 0.8272, 0.6564, -0.415, 0.8272, 0.6564, 0.415, 0.8272, 0.6564, 0.415, 0.8272, 0.6929, 0.415, 0.7797, 0.7484, 0.415, 0.5348, 0.8217, -0.415, 0.5348, 0.8217, -0.415, 0.5348, 0.8217, -0.415, 0.7797, 0.7484, 0.415, 0.7797, 0.7484, -0.415, 0.0814, 0.8217, -0.415, 0.5348, 0.8217, 0.415, 0.5348, 0.8217, 0.415, 0.5348, 0.8217, 0.415, 0.0814, 0.8217, -0.415, 0.0814, 0.8217, 0.415, 0.7797, 0.7484, -0.415, 0.7797, 0.7484, -0.415, 0.8272, 0.6929, -0.415, 0.8272, 0.6929, 0.415, 0.8272, 0.6929, 0.415, 0.7797, 0.7484, -0.415, 1.006, -0.8217, -0.415, 1.006, 0.3465, -0.415, 0.0814, -0.6142, -0.415, 0.0814, -0.6142, -0.415, 0.0814, -0.8217, -0.415, 1.006, -0.8217, -0.415, 0, -0.6142, -0.415, 0.0814, -0.6142, -0.415, 1.006, 0.3465, -0.415, 0, -0.6142, -0.415, 1.006, 0.3465, -0.415, 1.006, 0.5695, -0.415, 0, 0.6308, -0.415, 0, -0.6142, -0.415, 1.006, 0.5695, -0.415, 0.0814, 0.6308, -0.415, 0, 0.6308, -0.415, 1.006, 0.5695, -0.415, 0.0814, 0.6308, -0.415, 1.006, 0.5695, -0.415, 0.8272, 0.6564, -0.415, 0.0814, 0.6308, -0.415, 0.8272, 0.6564, -0.415, 0.8272, 0.6929, -0.415, 0.0814, 0.6308, -0.415, 0.8272, 0.6929, -0.415, 0.7797, 0.7484, -0.415, 0.0814, 0.8217, -0.415, 0.0814, 0.6308, -0.415, 0.7797, 0.7484, -0.415, 0.7797, 0.7484, -0.415, 0.5348, 0.8217, -0.415, 0.0814, 0.8217, 0.415, 1.006, 0.5695, 0.415, 0.8272, 0.6564, -0.415, 0.8272, 0.6564, -0.415, 0.8272, 0.6564, -0.415, 1.006, 0.5695, 0.415, 1.006, 0.5695, 0.415, 0.0814, 0.6308, -0.415, 0.0814, 0.6308, -0.415, 0.0814, 0.8217, -0.415, 0.0814, 0.8217, 0.415, 0.0814, 0.8217, 0.415, 0.0814, 0.6308, -0.415, 1.006, -0.8217, -0.415, 0.0814, -0.8217, 0.415, 0.0814, -0.8217, 0.415, 0.0814, -0.8217, 0.415, 1.006, -0.8217, -0.415, 1.006, -0.8217, 0.415, 0.0814, -0.8217, -0.415, 0.0814, -0.8217, -0.415, 0.0814, -0.6142, -0.415, 0.0814, -0.6142, 0.415, 0.0814, -0.6142, 0.415, 0.0814, -0.8217, 0.415, 1.006, 0.5695, -0.415, 1.006, 0.5695, -0.415, 1.006, 0.3465, -0.415, 1.006, 0.3465, 0.415, 1.006, 0.3465, 0.415, 1.006, 0.5695, 0.415, 1.006, 0.3465, -0.415, 1.006, 0.3465, -0.415, 1.006, -0.8217, -0.415, 1.006, -0.8217, 0.415, 1.006, -0.8217, 0.415, 1.006, 0.3465)
+
+[node name="truck_green" type="StaticBody3D"]
+
+[node name="truck_green" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = SubResource("ArrayMesh_67wxh")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_xumig")

@@ -458,7 +458,7 @@ cull_mask = 1047554
 transform = Transform3D(-1.56704e-06, 0, 0.432885, 0, 0.432885, 0, -0.432885, 0, -1.56704e-06, -0.0721286, -0.15859, 1.62197)
 
 [node name="left_hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47" index="1"]
-transform = Transform3D(-0.0278988, -0.0159618, -0.00658349, 0.0156678, -0.0286605, 0.00309228, -0.00725533, -0.000514416, 0.0319932, -0.00141227, -0.137364, -0.310467)
+transform = Transform3D(-0.0278988, -0.0159618, -0.00658349, 0.0156678, -0.0286605, 0.00309228, -0.00725532, -0.000514416, 0.0319932, -0.00141227, -0.137364, -0.310467)
 
 [node name="hand" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/AK47/left_hand" index="0"]
 surface_material_override/0 = null
@@ -723,12 +723,6 @@ surface_material_override/0 = null
 
 [node name="thumb_2" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/WeaponRig/m1911_handgun/right_hand/hand/thumb_0/thumb_1" index="0"]
 surface_material_override/0 = null
-
-[node name="ak_muzzle_flash" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/muzzle_flash_position" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0904032, -0.0537382, -0.863611)
-
-[node name="m1911_muzzle_flash" parent="WeaponViewport/SubViewport/ViewModel/WeaponsManager/RecoilPosition/muzzle_flash_position" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168404, -0.0975445, -0.952183)
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 
