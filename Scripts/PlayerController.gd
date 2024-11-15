@@ -2,6 +2,10 @@ class_name Player
 
 extends CharacterBody3D
 
+
+
+const HIT_STAGGER : float = 8.0
+const PLAYER_HEALTH : float = 100.0
 @export_group("Mouse Settings")
 @export var MOUSE_SENSITIVITY : float = 0.4
 @export_group("Camera Settings")
@@ -17,6 +21,7 @@ extends CharacterBody3D
 @export var ANIMATION_PLAYER : AnimationPlayer
 @export var CROUCH_SHAPECAST : ShapeCast3D
 
+
 var lastPosition = Vector3.ZERO
 var currentVelocity : Vector3
 var currentSpeed : String
@@ -26,6 +31,7 @@ var tiltInput : float
 var mouseRotation : Vector2
 var playerRotation : Vector3
 var cameraRotation : Vector3
+
 #var _speed : float
 
 var isCrouching : bool = false
@@ -34,8 +40,11 @@ var isFullscreen : bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var hitRay = %hitRay
+@onready var endOfHitRay = %endOfHitRay
 
 
+	
 func _ready():
 	Global.player = self
 	# Set mouse input to capture in screen
@@ -120,3 +129,7 @@ func UpdateInput(speed: float, acceleration: float, deceleration: float) -> void
 		
 func UpdateVelocity() -> void:
 	move_and_slide()
+
+func hit(dir):
+	EventBus.playerHit.emit()
+	velocity += dir * HIT_STAGGER

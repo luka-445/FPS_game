@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvj4y5g0hunhj"]
+[gd_scene load_steps=20 format=3 uid="uid://dvj4y5g0hunhj"]
 
 [ext_resource type="Environment" uid="uid://t4ybg7p0lmj8" path="res://Assets/World Environments/testEnvironment.tres" id="1_rtkxe"]
 [ext_resource type="Texture2D" uid="uid://pjjhl8rfd0jx" path="res://Assets/textures/kenney_prototype_textures/dark/texture_01.png" id="2_4d4pv"]
 [ext_resource type="PackedScene" uid="uid://sxjs4ihx81l" path="res://Controllers/player_controller.tscn" id="3_w27m4"]
 [ext_resource type="Texture2D" uid="uid://da8fsltk6ipd8" path="res://Assets/textures/kenney_prototype_textures/green/texture_01.png" id="4_mjxg4"]
-[ext_resource type="PackedScene" uid="uid://b12na3mpin5j4" path="res://Scenes/tier1_zombie.tscn" id="5_fx0ia"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pxorp"]
 size = Vector3(1, 0.1, 1)
@@ -40,10 +39,6 @@ albedo_texture = ExtResource("4_mjxg4")
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fxmhk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a87qq"]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_bhur2"]
-vertices = PackedVector3Array(-15, 0.497458, -15, -15, 0.497458, 15, 15, 0.497458, 15, 15, 0.497458, -15)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ob2j"]
 albedo_texture = ExtResource("2_4d4pv")
@@ -176,18 +171,11 @@ mesh = SubResource("CapsuleMesh_fxmhk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy dummy/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_a87qq")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_bhur2")
-
-[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
+[node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_d1agn")
-skeleton = NodePath("../../WorldEnvironment")
+skeleton = NodePath("../WorldEnvironment")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("BoxShape3D_6f4va")
-
-[node name="Tier1_zombie" parent="NavigationRegion3D" instance=ExtResource("5_fx0ia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-playerPath = NodePath("../../CharacterBody3D")

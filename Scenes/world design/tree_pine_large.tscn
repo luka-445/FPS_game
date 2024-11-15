@@ -7,7 +7,6 @@ resource_name = "treeB"
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_o63eb")
 metallic = 0.35
 roughness = 0.5
@@ -49,6 +48,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gcaah")
 
 [node name="treePine_large" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="treePine_large" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

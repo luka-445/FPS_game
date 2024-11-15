@@ -915,6 +915,8 @@ shadow_mesh = SubResource("ArrayMesh_5t80f")
 
 [node name="house_1" type="StaticBody3D"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.185228, -1.90735e-07, 0.601068)

@@ -4,7 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj8i7"]
 resource_name = "asphalt"
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_krai4")
 metallic = 0.35
 roughness = 0.5
@@ -47,6 +46,8 @@ shadow_mesh = SubResource("ArrayMesh_y1e67")
 data = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5)
 
 [node name="roadAsphalt_center" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="roadAsphalt_center" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

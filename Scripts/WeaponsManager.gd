@@ -3,74 +3,98 @@ class_name WeaponsManager
 extends Node3D
 
 signal weaponFired
-@onready var ak_muzzle_flash = %ak_muzzle_flash
-@onready var m1911_muzzle_flash = %ak_muzzle_flash
 
-
-@export var ANIMATION_PLAYER : AnimationPlayer
-var weaponIndicator : int = 0 # index of weapon in weaponStack.
-var currentWeapon : Weapon
-var currentWeaponTotalAmmo : int
-var currentWeaponAmmo : int
-var _nextWeapon : String
-var isAttacking : bool = false
-var bulletDecal = preload("res://Scenes/bullet_hole.tscn")
-var weaponDict = {} # Dictionary of all weapon resources.
-# array of weapons held by current player.
-# array index 0 holds primary weapon.
-# index 1 holds secondary weapon.
-# index 2 holds melee weapon.
-var weaponStack = []
-var muzzleFlash = preload("res://Scenes/muzzle_flash.tscn")
-# auxilary array used to build dictionary.
 @export var weaponResourcesAux: Array[Weapon]
-
-# holds starting weapons.
-# this is in case more weapons are added later on.
-# makes this system modular and expandable.
 @export var startWeapons: Array[String]
+var currentWeapon : Weapon
+var isAttacking : bool = false
+var weaponDict = {} # Dictionary of all weapon resources.
+var weaponStack = []
+
+var bulletDecal = load("res://Scenes/bullet_hole.tscn")
+var bulletTracer = load("res://Scenes/bullet_tracer.tscn")
+var bulletInstance
 
 var bullets = 30
 var timeToFire : float
-var nextTimeToFire : float = 0
+var canFire : bool = true
+
+# weapon variables
+@onready var ak47_barrel = $AK47/akMeshModel/ak_barrel
+@onready var m9Bayonet = $M9_bayonet
+@onready var m1911_barrel = $m1911_handgun/m1911_barrel
+var shootingCooldown : float = 60.0
+var anim
+var barrel
+# weapon animation players
+@onready var weaponSwitching = $weaponSwitching
+@onready var ak47_animPlayer = $AK47/AnimationPlayer
+@onready var m9Bayonet_animPlayer = $M9_bayonet/AnimationPlayer
+@onready var m1911Handgun_animPlayer = $m1911_handgun/AnimationPlayer
+
+
+var hitRayStartPosition : Vector3 
+var endRayStartPosition : Vector3 
+
+var currentWeaponID : int = -1
+var canShoot = true
+enum _weapons {
+	PRIMARY,
+	SECONDARY,
+	MELEE
+}
+
 
 func _ready():
-	
-	# Initilizes start of weapon state machine.
 	InitWeapon()
-	
-	
+	if Global.player != null:
+		hitRayStartPosition = Global.player.hitRay.position
+		endRayStartPosition = Global.player.endOfHitRay.position
 
 func _input(event):
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") and currentWeapon.autoFire == true and canShoot:
 		isAttacking = true
-		Attack()
-	
-	if event.is_action_released("attack"):
+		Shoot()
+
+	if event.is_action_released("attack") and currentWeapon.autoFire == true:
 		isAttacking = false
+	
+	if event.is_action_released("attack") and canShoot and currentWeapon.meleeWeapon == true:
+		isAttacking = true
+		meleeAttack()
+	
+	if event.is_action_pressed("attack") and currentWeapon.semiAuto == true and canShoot and canFire:
+		isAttacking = true
+		Shoot_semiAuto()
 		
-	
-	
 	# pull out primary weapon.
 	if event.is_action_pressed("primaryWeapon"):
-		exit(weaponStack[0])
+		_raiseWeapon(_weapons.PRIMARY)
 	
 	# pull out secondary weapon
 	if event.is_action_pressed("secondaryWeapon"):
-		exit(weaponStack[1])
+		_raiseWeapon(_weapons.SECONDARY)
 	
 	# pull out melee weapon
 	if event.is_action_pressed("meleeWeapon"):
-		exit(weaponStack[2])
+		_raiseWeapon(_weapons.MELEE)
 
 func _process(delta):
-	nextTimeToFire = delta + 1 / currentWeapon.fireRate
+	Global.debug.AddProperty("BulletCount", bullets,3)
+	Global.debug.AddProperty("Barrel", barrel, 4)
+	Global.debug.AddProperty("weaponAnim", anim, 5)
 	
 func _physics_process(delta):
-	pass
+	if Global.player.hitRay.position != hitRayStartPosition and isAttacking == false:
+		Global.player.hitRay.position = lerp(Global.player.hitRay.position, 
+		hitRayStartPosition, currentWeapon.recoilResetSpeed * delta)
+
+	if Global.player.endOfHitRay.position != endRayStartPosition and isAttacking == false:
+		Global.player.hitRay.position = lerp(Global.player.hitRay.position,
+		 hitRayStartPosition, currentWeapon.recoilResetSpeed * delta)
+	
 
 func InitWeapon():
-	
 	# Create dictionary for reference to weapons.
 	for weapon in weaponResourcesAux:
 		weaponDict[weapon.weaponName] = weapon
@@ -79,108 +103,119 @@ func InitWeapon():
 	for i in startWeapons:
 		weaponStack.push_back(i)
 	
-	# set current weapon to frist weapon held by player in weapon stack and call enter.
-	currentWeapon = weaponDict[weaponStack[0]]
-	enter()
+	anim = ak47_animPlayer
+	barrel = ak47_barrel
+	currentWeapon = weaponDict[weaponStack[_weapons.PRIMARY]]
+	currentWeaponID = _weapons.PRIMARY
+	weaponSwitching.play("raise_ar")
+	await get_tree().create_timer(0.4).timeout
+
+func _lowerWeapon():
+	match currentWeaponID:
+		_weapons.PRIMARY:
+			weaponSwitching.play("lower_ar")
+		_weapons.SECONDARY:
+			weaponSwitching.play("lower_pistol")
+		_weapons.MELEE:
+			weaponSwitching.play("lower_knife")
+func _raiseWeapon(newWeapon):
+	if currentWeaponID != newWeapon:
+		canShoot = false
+		_lowerWeapon()
+		currentWeaponID = newWeapon
+		await get_tree().create_timer(0.4).timeout
+		match currentWeaponID:
+			_weapons.PRIMARY:
+				weaponSwitching.play("raise_ar")
+				anim = ak47_animPlayer
+				barrel = ak47_barrel
+			_weapons.SECONDARY:
+				weaponSwitching.play("raise_pistol")
+				anim = m1911Handgun_animPlayer
+				barrel = m1911_barrel
+			_weapons.MELEE:
+				weaponSwitching.play("raise_knife")
+				anim = m9Bayonet_animPlayer
+		currentWeapon = weaponDict[weaponStack[currentWeaponID]]
+		canShoot = true
 
 
-# call when entering into next weapon.
-func enter():
-	# Play pullout animation
-	ANIMATION_PLAYER.queue(currentWeapon.animationPullout)
-	
-	# Set ammo count
-	currentWeaponAmmo = currentWeapon.shotCount
-	currentWeaponTotalAmmo = currentWeapon.shotCount
-	timeToFire = 1 / (currentWeapon.fireRate / 60)
-	
-	
-	Global.debug.AddProperty("Ammo", currentWeaponTotalAmmo, 4)
-	
-	# set weapon recoil amount
-	Global.recoil.recoil_amount = currentWeapon.recoilAmount
-	Global.recoil.snap_amount = currentWeapon.snapAmount
-	Global.recoil.speed = currentWeapon.speed
-	Global.debug.AddProperty("recoilAmount", currentWeapon.recoilAmount, 5)
-	Global.debug.AddProperty("snapAmount", currentWeapon.snapAmount, 6)
-	Global.debug.AddProperty("recoil_speed", currentWeapon.speed, 7)
-	
-	# set weapon recoil physics amount
-	Global.recoil_physics.recoil_amount = currentWeapon.recoilAmountPhysics
-	Global.recoil_physics.snap_amount = currentWeapon.snapAmountPhysics
-	Global.recoil_physics.speed = currentWeapon.speedPhysics
-	
-	# Set weapon muzzle flash position
-	
-# Call exit before changing weapon.
-func exit(nextWeapon):
-	# if next is current than don't switch.
-	if nextWeapon == currentWeapon.weaponName:
-		return
-	
-	if ANIMATION_PLAYER.get_current_animation() != currentWeapon.animationPutaway:
-		ANIMATION_PLAYER.play(currentWeapon.animationPutaway)
-		_nextWeapon = nextWeapon
+ #Attack: function creates a raycast when attack input is read.
 
-# Updates current weapon.
-func ChangeWeapon(weaponName):
-	# update current weapon to new weapon.
-	currentWeapon = weaponDict[weaponName]
-	# Reset next Weapon to empty string.
-	_nextWeapon = ""
-	# Enter new weapon.
-	enter()
-
-# sends signal when current animation is finished playing.
-func _on_animation_player_animation_finished(anim_name):
-	# when signal triggered, if anim_name == animationPutaway then change weapon.
-	if anim_name == currentWeapon.animationPutaway:
-		ChangeWeapon(_nextWeapon)
+func Shoot() -> void:
+	if bullets == 0: 
+		bullets = 30
 	
-	if anim_name == currentWeapon.animationFire and currentWeapon.autoFire == true:
-		if isAttacking:
-			await get_tree().create_timer(nextTimeToFire).timeout
-			Attack()
+	# if raycast colliding
+	
+	
+	bullets -= 1
+	#if !anim.is_playing():
+	if isAttacking:
+		weaponFired.emit()
+		bulletInstance = bulletTracer.instantiate()
+		anim.play(currentWeapon.animationFire)
+		if Global.player.hitRay.is_colliding():
+			bulletInstance.init(barrel.global_position, Global.player.hitRay.get_collision_point())
+			get_parent().get_parent().add_child(bulletInstance)
+			if Global.player.hitRay.get_collider().is_in_group("enemy"):
+				Global.player.hitRay.get_collider().hit()
+				bulletInstance.triggerParticles(Global.player.hitRay.get_collision_point(), 
+				barrel.global_position, true)
+			else:
+				bulletInstance.triggerParticles(Global.player.hitRay.get_collision_point(), 
+				barrel.global_position, false)
+		else:
+			bulletInstance.init(barrel.global_position, Global.player.endOfHitRay.global_position)
+			get_parent().get_parent().add_child(bulletInstance)
+		
+		
+		
+		await get_tree().create_timer(60.0 / currentWeapon.fireRate).timeout
+		if currentWeapon.autoFire == true:
+			Shoot()
 	
 
-# Attack: function creates a raycast when attack input is read.
-func Attack() -> void:
-	Global.debug.AddProperty("Ammo", currentWeaponAmmo, 4)
+func Shoot_semiAuto():
+	canFire = false
+	if bullets == 0: 
+		bullets = 30
 	
-	if currentWeaponAmmo <= 0:
-		print("gun empty")
-		currentWeaponAmmo = currentWeaponTotalAmmo
-		Global.debug.AddProperty("Ammo", currentWeaponAmmo, 4)
+	bullets -= 1
+	if !anim.is_playing():
+		anim.play(currentWeapon.animationFire)
 	
-	ANIMATION_PLAYER.play(currentWeapon.animationFire)
-	var flash = muzzleFlash.instantiate()
-	if currentWeapon.weaponName == "AK-47":
-		get_node("RecoilPosition/muzzle_flash_position/ak_muzzle_flash").add_child(flash)
-		flash.position = ak_muzzle_flash.position
+	weaponFired.emit()
+	bulletInstance = bulletTracer.instantiate()
+	if Global.player.hitRay.is_colliding():
+		bulletInstance.init(barrel.global_position, Global.player.hitRay.get_collision_point())
+		get_parent().get_parent().add_child(bulletInstance)
+		if Global.player.hitRay.get_collider().is_in_group("enemy"):
+			Global.player.hitRay.get_collider().hit()
+			bulletInstance.triggerParticles(Global.player.hitRay.get_collision_point(), 
+			barrel.global_position, true)
+		else:
+			bulletInstance.triggerParticles(Global.player.hitRay.get_collision_point(), 
+			barrel.global_position, false)
+	else:
+		bulletInstance.init(barrel.global_position, Global.player.endOfHitRay.global_position)
+		get_parent().get_parent().add_child(bulletInstance)
 	
-	if currentWeapon.weaponName == "1911":
-		get_node("RecoilPosition/muzzle_flash_position/m1911_muzzle_flash").add_child(flash)
-		flash.position = m1911_muzzle_flash.position
-	
-	currentWeaponAmmo -= 1
-	EventBus.weaponFired.emit()
-	# get fps controller camera reference.
-	var camera = Global.player.CAMERA_RECOIL
-	# Get space state of camera.
-	var spaceState = get_world_3d().direct_space_state
-	# get origin or center of screen
-	var centerOfScreen = get_viewport().size / 2
-	# get origin point for array, i.e starting point of raycast.
-	var origin = camera.project_ray_origin(centerOfScreen)
-	# get endpoint of raycast.
-	var end = origin + camera.project_ray_normal(centerOfScreen) * currentWeapon.range
-	# create raycast.
-	var query =  PhysicsRayQueryParameters3D.create(origin, end)
-	query.collide_with_bodies = true
-	var result = spaceState.intersect_ray(query)
-	if result and !currentWeapon.meleeWeapon:
-		bulletHole(result.get("position"), result.get("normal"))
+	await get_tree().create_timer(60.0 / currentWeapon.fireRate).timeout
+	canFire = true
 
+func addRecoil() -> void:
+	var spread = currentWeapon.recoilSpread
+	var randomSpreadRay = Vector3(randf_range(-spread, spread), randf_range(-spread, spread), -1)
+	var randomSpreadEndRay = randomSpreadRay
+	randomSpreadEndRay.z = -101
+	Global.player.hitRay.position = randomSpreadRay
+	Global.player.endOfHitRay.position = randomSpreadEndRay
+	
+	
+
+func meleeAttack():
+	anim.play(currentWeapon.animationFire)
 # bulletHole: This function spawns bullet decal when raycast collides with world object.
 # Parameters:
 # position : Vector3; intersection of raycast and physics body it collided with,
@@ -198,9 +233,9 @@ func bulletHole(position : Vector3, normal : Vector3 ) -> void:
 	instance.global_position = position
 	
 	# Rotate bullet decal if surface is not already pointing up.
-	instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
-	if normal != Vector3.UP and normal != Vector3.DOWN:
-		instance.rotate_object_local(Vector3(1, 0, 0), 90)
+	#instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
+	#if normal != Vector3.UP and normal != Vector3.DOWN:
+		#instance.rotate_object_local(Vector3(1, 0, 0), 90)
 	
 	# Create timer for how long bullet decal should stay, then fade out bullet hole before deleting it
 	# from the scene
@@ -209,6 +244,6 @@ func bulletHole(position : Vector3, normal : Vector3 ) -> void:
 	fade.tween_property(instance, "modulate:a", 0, 1.5)
 	await get_tree().create_timer(1.5).timeout
 	instance.queue_free()
-
-func knifeLine(position : Vector3, normal : Vector3 ) -> void:
-	pass
+	
+func _on_weapon_fired():
+	addRecoil()

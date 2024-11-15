@@ -6,7 +6,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t8s8"]
 resource_name = "wall_lines"
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_sf0q1")
 metallic = 0.35
 roughness = 0.5
@@ -15,7 +14,6 @@ texture_filter = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7tme"]
 resource_name = "concrete"
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_30xh3")
 metallic = 0.35
 roughness = 0.5
@@ -27,7 +25,6 @@ resource_name = "bars"
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("3_rj2dp")
 metallic = 0.35
 roughness = 0.5
@@ -114,6 +111,8 @@ shadow_mesh = SubResource("ArrayMesh_n3ksd")
 points = PackedVector3Array(0.5, 0.5, 0.035, 0.5, 0, 0.035, 0.5, 0.5, -0.035, -0.5, 0.5, 0.035, 0.5, 0, -0.035, -0.5, 0, 0.035, -0.5, 0.5, -0.035, -0.5, 0, -0.035)
 
 [node name="wallFence" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="wallFence" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
