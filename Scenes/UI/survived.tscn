@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbruf1ln0hpnb"]
+
+[ext_resource type="Script" path="res://Scripts/UI scripts/survived.gd" id="1_c8xv7"]
+[ext_resource type="Theme" uid="uid://dk45mkovpfyxo" path="res://UI/Themes/UI_Theme1.tres" id="2_8c62c"]
+
+[node name="Survived" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8xv7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8c62c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Congratulations, you survived 30 minutes!"
+
+[node name="playAgain" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play Again"
+
+[node name="quit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/playAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

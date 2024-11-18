@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dk45mkovpfyxo"]
+
+[ext_resource type="StyleBox" uid="uid://c37t5gcdi7yyv" path="res://UI/Themes/UI_styleBoxFlat1.tres" id="1_w8wjd"]
+
+[resource]
+Button/styles/normal = ExtResource("1_w8wjd")
+PanelContainer/styles/panel = ExtResource("1_w8wjd")
+TitleLabel/base_type = &"Label"
+TitleLabel/font_sizes/font_size = 50
+TitleLabel/fonts/font = null
+VBoxContainer/constants/separation = 15
