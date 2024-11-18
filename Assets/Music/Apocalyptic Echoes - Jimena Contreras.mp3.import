@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cy7p47x3vtaoi"
+path="res://.godot/imported/Apocalyptic Echoes - Jimena Contreras.mp3-6542c4ef18aeafe4bf3002eecb8ce33f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Apocalyptic Echoes - Jimena Contreras.mp3"
+dest_files=["res://.godot/imported/Apocalyptic Echoes - Jimena Contreras.mp3-6542c4ef18aeafe4bf3002eecb8ce33f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

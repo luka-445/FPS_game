@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3lws4126slb5"
+path="res://.godot/imported/AETHER - Density & Time.mp3-7dd5afa2942590a4d6a32c9787a25d6a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/AETHER - Density & Time.mp3"
+dest_files=["res://.godot/imported/AETHER - Density & Time.mp3-7dd5afa2942590a4d6a32c9787a25d6a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

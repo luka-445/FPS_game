@@ -1,17 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://sxjs4ihx81l"]
+[gd_scene load_steps=25 format=3 uid="uid://sxjs4ihx81l"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_hysve"]
+[ext_resource type="Script" path="res://Scripts/Controller scripts/PlayerController.gd" id="1_hysve"]
 [ext_resource type="Material" uid="uid://b5lj3iwe0gjd0" path="res://Assets/materials/player.tres" id="2_gd0h0"]
-[ext_resource type="Script" path="res://Scripts/Reticle.gd" id="3_igqlc"]
+[ext_resource type="Script" path="res://Scripts/UI scripts/Reticle.gd" id="3_igqlc"]
 [ext_resource type="Theme" uid="uid://bkrq5gjojmx2j" path="res://UI/Themes/Debug.tres" id="4_l4ijy"]
-[ext_resource type="Script" path="res://Scripts/Debug.gd" id="5_8lllq"]
-[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="6_jtacy"]
-[ext_resource type="Script" path="res://Scripts/IdlePlayerState.gd" id="7_m0675"]
-[ext_resource type="Script" path="res://Scripts/WalkingPlayerState.gd" id="8_uf0xs"]
-[ext_resource type="Script" path="res://Scripts/SprintingPlayerState.gd" id="9_sw4er"]
-[ext_resource type="Script" path="res://Scripts/CrouchingPlayerState.gd" id="10_5btfm"]
-[ext_resource type="Script" path="res://Scripts/JumpingPlayerState.gd" id="11_tvuup"]
-[ext_resource type="Script" path="res://Scripts/FallingPlayerState.gd" id="12_7padl"]
+[ext_resource type="Script" path="res://Scripts/Global scripts/Debug.gd" id="5_8lllq"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/StateMachine.gd" id="6_jtacy"]
+[ext_resource type="Texture2D" uid="uid://7alax6j4shee" path="res://Assets/textures/BloodOverlay.png" id="6_pjkxh"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/IdlePlayerState.gd" id="7_m0675"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/WalkingPlayerState.gd" id="8_uf0xs"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/SprintingPlayerState.gd" id="9_sw4er"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/CrouchingPlayerState.gd" id="10_5btfm"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/JumpingPlayerState.gd" id="11_tvuup"]
+[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/FallingPlayerState.gd" id="12_7padl"]
 [ext_resource type="PackedScene" uid="uid://s754mbsqopr8" path="res://Controllers/view_model.tscn" id="13_twrey"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2vig8"]
@@ -317,10 +318,9 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a7305"]
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "CAMERA_RECOIL", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
 script = ExtResource("1_hysve")
 CAMERA_CONTROLLER = NodePath("CameraController/MainCamera")
-CAMERA_RECOIL = NodePath("CameraController/Recoil/RaycastCamera")
 VIEWPORT_CAMERA = NodePath("WeaponViewport/SubViewport/ViewModel")
 WEAPON_SUB_VIEWPORT = NodePath("WeaponViewport/SubViewport")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
@@ -354,10 +354,6 @@ collide_with_areas = true
 [node name="endOfHitRay" type="Node3D" parent="CameraController/MainCamera"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101)
-
-[node name="Recoil" type="Node3D" parent="CameraController"]
-
-[node name="RaycastCamera" type="Camera3D" parent="CameraController/Recoil"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -411,6 +407,7 @@ points = PackedVector2Array(-5, 0, -15, 0)
 width = 2.0
 
 [node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
+z_index = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 10.0
@@ -426,6 +423,16 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="hitTexture" type="TextureRect" parent="UserInterface"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pjkxh")
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("6_jtacy")
@@ -464,4 +471,9 @@ render_target_update_mode = 4
 [node name="ViewModel" parent="WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
 cull_mask = 1047554
 
+[node name="HealthTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]

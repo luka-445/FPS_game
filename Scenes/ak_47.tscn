@@ -1,10 +1,11 @@
-[gd_scene load_steps=188 format=4 uid="uid://dloj4grhe7mft"]
+[gd_scene load_steps=189 format=4 uid="uid://dloj4grhe7mft"]
 
 [ext_resource type="Texture2D" uid="uid://vk0k52xxt0yv" path="res://Assets/Weapons/AK47/ak-47 (1)_0.png" id="1_4wst0"]
 [ext_resource type="Texture2D" uid="uid://20j85lggw3bp" path="res://Assets/Weapons/AK47/ak-47 (1)_1.png" id="2_vakb2"]
 [ext_resource type="Texture2D" uid="uid://bnji7qk2qpgy2" path="res://Assets/Weapons/AK47/ak-47 (1)_2.png" id="3_m2xbn"]
 [ext_resource type="Material" uid="uid://e88mvbkogsfj" path="res://Assets/materials/hands_material.tres" id="4_k8l2n"]
 [ext_resource type="AnimationLibrary" uid="uid://d3takrrxincwi" path="res://Assets/animation libraries/ak47_anim_library.res" id="5_you4t"]
+[ext_resource type="AudioStream" uid="uid://cynhs4kdou7j1" path="res://Assets/Sounds/cg1.wav" id="6_2f4in"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5u684"]
 resource_name = "Material_44"
@@ -3423,3 +3424,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935609, -0.0618212, -0.372
 libraries = {
 "": ExtResource("5_you4t")
 }
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2f4in")
+bus = &"sfx"

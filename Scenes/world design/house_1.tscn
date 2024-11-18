@@ -1079,7 +1079,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99259, 0.996228, 3.46714)
 shape = SubResource("ConcavePolygonShape3D_d33sx")
 
 [node name="CollisionShape3D41" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96584, 0, 3.46714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95144, 0, 3.46714)
 shape = SubResource("ConcavePolygonShape3D_tprgv")
 
 [node name="CollisionShape3D42" type="CollisionShape3D" parent="."]
@@ -1087,7 +1087,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96584, 0.994668, 3.46714)
 shape = SubResource("ConcavePolygonShape3D_ket5s")
 
 [node name="CollisionShape3D43" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.45692, 0, 2.9733)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.45692, 0, 2.96276)
 shape = SubResource("ConcavePolygonShape3D_sy4hw")
 
 [node name="CollisionShape3D44" type="CollisionShape3D" parent="."]
@@ -1457,7 +1457,7 @@ mesh = SubResource("ArrayMesh_4ojys")
 skeleton = NodePath("")
 
 [node name="wallA_flat5" type="MeshInstance3D" parent="house1_mesh/flat walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96584, 0, 3.46714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96144, 0, 3.47214)
 mesh = SubResource("ArrayMesh_4ojys")
 skeleton = NodePath("")
 

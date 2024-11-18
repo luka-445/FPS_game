@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgci56gewgboc"]
+
+[ext_resource type="Texture2D" uid="uid://7alax6j4shee" path="res://Assets/textures/BloodOverlay.png" id="1_7ysht"]
+[ext_resource type="Script" path="res://Scripts/UI scripts/hitTexture.gd" id="2_ih2gb"]
+
+[node name="hitTexture" type="TextureRect"]
+modulate = Color(1, 1, 1, 0.490196)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7ysht")
+expand_mode = 3
+script = ExtResource("2_ih2gb")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://bfx8y1io342tx"]
+[gd_scene load_steps=81 format=4 uid="uid://bfx8y1io342tx"]
 
 [ext_resource type="Texture2D" uid="uid://5k1ea13xmdou" path="res://Assets/Weapons/handgun_1911/m1911_handgun_0.png" id="1_ndu30"]
 [ext_resource type="Texture2D" uid="uid://cy46w77jmc8xc" path="res://Assets/Weapons/handgun_1911/m1911_handgun_1.jpg" id="2_sgqay"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsv43aurfamh5" path="res://Assets/Weapons/handgun_1911/m1911_handgun_3.png" id="4_0nj2j"]
 [ext_resource type="Texture2D" uid="uid://ctp6t1befwir8" path="res://Assets/Weapons/handgun_1911/m1911_handgun_4.jpg" id="5_h7bwt"]
 [ext_resource type="Material" uid="uid://e88mvbkogsfj" path="res://Assets/materials/hands_material.tres" id="6_vkcco"]
+[ext_resource type="AudioStream" uid="uid://c5fp48hl57nny" path="res://Assets/Sounds/pistol.wav" id="7_4vd03"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3uru"]
 resource_name = "Fire.001"
@@ -851,6 +852,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFXStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4fron"]
 resource_name = "m1911_fire"
@@ -878,6 +891,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.00698132, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFXStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jvm3j"]
@@ -1064,3 +1089,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172647, -0.0979402, -0.3951
 libraries = {
 "": SubResource("AnimationLibrary_jvm3j")
 }
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4vd03")
+bus = &"sfx"

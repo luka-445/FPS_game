@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb0qkr381fgco"]
+
+[ext_resource type="Script" path="res://Scripts/UI scripts/start_menu.gd" id="1_hs5sw"]
+[ext_resource type="Theme" uid="uid://dk45mkovpfyxo" path="res://UI/Themes/UI_Theme1.tres" id="2_emt28"]
+[ext_resource type="PackedScene" uid="uid://6jacgx8gc8p7" path="res://Scenes/UI/options_menu.tscn" id="3_ehks4"]
+[ext_resource type="AudioStream" uid="uid://b3lws4126slb5" path="res://Assets/Music/AETHER - Density & Time.mp3" id="4_0h6ik"]
+
+[node name="StartMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hs5sw")
+
+[node name="StartMenuContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="StartMenuContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_emt28")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenuContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_emt28")
+
+[node name="Title" type="Label" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_emt28")
+theme_type_variation = &"TitleLabel"
+text = "Game Title"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_emt28")
+text = "W, A, S, D keys to move forward, left, backward, right.
+Spacebar to jump
+Left mouse button to shoot.
+esc key to pause"
+
+[node name="Play" type="Button" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_emt28")
+text = "Play"
+
+[node name="Settings" type="Button" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_emt28")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_emt28")
+text = "Quit"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_ehks4")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0h6ik")
+autoplay = true
+bus = &"music"

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bptpqf6sbay3e"]
 
-[ext_resource type="Script" path="res://Scripts/bullet_tracer.gd" id="1_h3qv4"]
+[ext_resource type="Script" path="res://Scripts/weapon scripts/bullet_tracer.gd" id="1_h3qv4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok5s6"]
 transparency = 1
-albedo_color = Color(1, 0.823853, 0.132813, 1)
+albedo_color = Color(1, 0.823529, 0.133333, 1)
 emission_enabled = true
 emission = Color(1, 0.791992, 0.167969, 1)
 emission_energy_multiplier = 8.0

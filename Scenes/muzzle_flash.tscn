@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bks5h1cv8q1rk"]
 
-[ext_resource type="Script" path="res://Scripts/muzzle_flash.gd" id="1_d1amq"]
+[ext_resource type="Script" path="res://Scripts/currently not used/muzzle_flash.gd" id="1_d1amq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cil3c"]
 angle_min = -84.4

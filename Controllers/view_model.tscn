@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://s754mbsqopr8"]
 
-[ext_resource type="Script" path="res://Scripts/ViewModel.gd" id="1_rsvuw"]
-[ext_resource type="Script" path="res://Scripts/WeaponsManager.gd" id="2_063mt"]
+[ext_resource type="Script" path="res://Scripts/Controller scripts/ViewModel.gd" id="1_rsvuw"]
+[ext_resource type="Script" path="res://Scripts/weapon scripts/WeaponsManager.gd" id="2_063mt"]
 [ext_resource type="Script" path="res://Assets/Weapons/Weapons.gd" id="3_valo7"]
 [ext_resource type="Resource" uid="uid://cnm5if7kitmud" path="res://Assets/Weapons/weapon resources/ak47_resource.tres" id="4_gygkn"]
 [ext_resource type="Resource" uid="uid://dsn0ehc1sawu3" path="res://Assets/Weapons/weapon resources/m9_bayonet_resource.tres" id="5_n5cgb"]

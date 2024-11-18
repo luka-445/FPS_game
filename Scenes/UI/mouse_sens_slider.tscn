@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://5n3th1h7gbwc"]
+
+[ext_resource type="PackedScene" uid="uid://6llgg2iux6w7" path="res://Scenes/UI/volume_slider.tscn" id="1_5rggj"]
+[ext_resource type="Script" path="res://Scripts/UI scripts/mouse_sens_slider.gd" id="2_6paow"]
+
+[node name="mouseSens_slider" instance=ExtResource("1_5rggj")]
+min_value = 0.01
+value = 0.01
+script = ExtResource("2_6paow")
