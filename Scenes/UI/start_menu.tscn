@@ -45,6 +45,7 @@ theme = ExtResource("2_emt28")
 text = "W, A, S, D keys to move forwards, left, backwards, right.
 Spacebar to jump
 Left mouse button to shoot.
+1 to switch to primary weapon, 2 to switch to secondary weapon
 esc key to pause
 Can you survive for 10 minutes?"
 
