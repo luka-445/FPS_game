@@ -32,7 +32,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Congratulations, you survived 30 minutes!"
+text = "Congratulations, you survived 10 minutes!"
 
 [node name="playAgain" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

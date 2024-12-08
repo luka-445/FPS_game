@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var hitTexture = $UserInterface/hitTexture
 
 # Player variables
+
 @export_group("Mouse Settings")
 @export var MOUSE_SENSITIVITY : float = 0.4
 @export_group("Camera Settings")
@@ -25,7 +26,6 @@ extends CharacterBody3D
 @export var WEAPON_SUB_VIEWPORT : SubViewport
 @export_category("Other")
 @export var ANIMATION_PLAYER : AnimationPlayer
-@export var CROUCH_SHAPECAST : ShapeCast3D
 const HIT_STAGGER : float = 5.0
 const PLAYER_HEALTH : float = 100.0
 const HEALING_RATE : float = 1.5
@@ -49,7 +49,6 @@ var cameraRotation : Vector3
 var swayMin = Vector2(-20, -20)
 var swayMax = Vector2(20, 20)
 
-var isFullscreen : bool = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -64,8 +63,6 @@ func _ready():
 	# Set mouse input to capture in screen
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	WEAPON_SUB_VIEWPORT.size = DisplayServer.window_get_size()
-	# Add exception to crouch shapecast to exlude CharacterBody3D node.
-	CROUCH_SHAPECAST.add_exception($".")
 	SettingsSignalBus.on_mouse_sensitivity_changed.connect(load_data)
 
 func load_data(value : float):
@@ -73,15 +70,13 @@ func load_data(value : float):
 
 func _input(event):
 	
-	# Set to full screen
-	if event.is_action_pressed("fullScreen") and isFullscreen == false:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		WEAPON_SUB_VIEWPORT.size = DisplayServer.window_get_size()
-		isFullscreen = true
+	# unlock mouse or caputre mouse, these are only meant for the developer
+	if event.is_action_pressed("unlockMouse"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	# If exit key  is pressed, quit out.
-	if event.is_action_pressed("exit"):
-		get_tree().quit()
+	if event.is_action_pressed("captureMouse"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	
 
 # Get mouse input.
@@ -164,7 +159,7 @@ func UpdateInput(speed: float, acceleration: float, deceleration: float) -> void
 		velocity.x = move_toward(velocity.x, 0, deceleration) 
 		velocity.z = move_toward(velocity.z, 0, deceleration)
 
-# Moves the character.
+# Moves the player.
 func UpdateVelocity() -> void:
 	move_and_slide()
 
@@ -173,7 +168,6 @@ func hit(dir, damage):
 	healthTimer.start()
 	canHeal = false
 	currentHealth -= damage
-	EventBus.playerHit.emit()
 	velocity += dir * HIT_STAGGER
 
 # Heals the player

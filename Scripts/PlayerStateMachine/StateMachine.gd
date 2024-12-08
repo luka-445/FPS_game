@@ -1,4 +1,4 @@
-class_name StateMachine
+class_name PlayerMovementStateMachine
 
 extends Node
 
@@ -25,7 +25,6 @@ func _process(delta):
 	Global.debug.AddProperty("Current State", CURRENT_STATE.name, 1)
 
 func _physics_process(delta):
-	# update physics calculation for the set current state.
 	CURRENT_STATE.physics_update(delta)
 
 # Function controls logic that updates State.

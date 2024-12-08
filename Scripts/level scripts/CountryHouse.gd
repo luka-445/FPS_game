@@ -1,38 +1,40 @@
+class_name Level
 extends Node3D
 
-@onready var survived = $UI/Survived
-
-@onready var hit = $UI/hit
 @onready var spawnsNode = $Map/Spawns
 @onready var navRegionNode = $Map/NavigationRegion3D
+@onready var player = $Map/NavigationRegion3D/player
 
 # TIMERS
 @onready var increaseTier1Max = $Timers/IncreaseTier1Max
 @onready var increaseTier2Max = $Timers/IncreaseTier2Max
 @onready var increaseTier3Max = $Timers/IncreaseTier3Max
-@onready var survive_timer = $Timers/SurviveTimer
+@onready var surviveTimer = $Timers/SurviveTimer
 var seconds : int = 0
 var minutes : int = 0
 
 @onready var label = $HUD/Label
 
-const MAX_TIER1_COUNT = 100
-const MAX_TIER2_COUNT = 50
-const MAX_TIER3_COUNT = 8
+const MAX_TIER1_COUNT = 50
+const MAX_TIER2_COUNT = 10
+const MAX_TIER3_COUNT = 3
 
 var tier1Zombie = load("res://Scenes/enemies/tier1_zombie.tscn")
 var tier2Zombie = load("res://Scenes/enemies/tier2_zombie.tscn")
 var tier3Zombie = load("res://Scenes/enemies/tier3_zombie.tscn")
 var zombieInstance
 
-var canTier2Spawn : bool = false
-var canTier3Spawn : bool = false
-var currentMaxTier1ZombieCount : int = 30
+var canTier2Spawn : bool = true
+var canTier3Spawn : bool = true
+var currentMaxTier1ZombieCount : int = 10  #30
 var currentMaxTier2ZombieCount : int = 0
 var currentMaxTier3ZombieCount : int = 0
 var currentTier1ZombieCount : int = 0
 var currentTier2ZombieCount : int = 0
 var currentTier3ZombieCount : int = 0
+
+var gameOver : bool = false
+var victory : bool = false
 
 func _ready():
 	get_tree().paused = false
@@ -48,10 +50,12 @@ func _process(_delta):
 		Global.debug.AddProperty("Tier2MaxCount", currentMaxTier2ZombieCount, 6)
 		Global.debug.AddProperty("Tier3MaxCount", currentMaxTier3ZombieCount, 7)
 	
-	if Global.player.currentHealth <= 0:
-		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+	if player.currentHealth <= 0 and gameOver == false:
+		gameOver = true
+		get_tree().change_scene_to_file("res://Scenes/UI/game_over.tscn")
 	
-	if minutes == 30:
+	if minutes == 10 and victory == false:
+		victory = true
 		get_tree().change_scene_to_file("res://Scenes/UI/survived.tscn")
 
 
@@ -85,7 +89,7 @@ func _on_zombie_spawn_timer_timeout():
 
 func spawnEnemies():
 	var spawnPoints = _getSpawnPoints()
-	_spawnTier1(spawnPoints[0])
+	_spawnTier1(spawnPoints[0]) 
 	if canTier2Spawn == true:
 		_spawnTier2(spawnPoints[1])
 	

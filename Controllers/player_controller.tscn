@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://sxjs4ihx81l"]
+[gd_scene load_steps=24 format=3 uid="uid://sxjs4ihx81l"]
 
 [ext_resource type="Script" path="res://Scripts/Controller scripts/PlayerController.gd" id="1_hysve"]
 [ext_resource type="Material" uid="uid://b5lj3iwe0gjd0" path="res://Assets/materials/player.tres" id="2_gd0h0"]
@@ -10,9 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerStateMachine/IdlePlayerState.gd" id="7_m0675"]
 [ext_resource type="Script" path="res://Scripts/PlayerStateMachine/WalkingPlayerState.gd" id="8_uf0xs"]
 [ext_resource type="Script" path="res://Scripts/PlayerStateMachine/SprintingPlayerState.gd" id="9_sw4er"]
-[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/CrouchingPlayerState.gd" id="10_5btfm"]
 [ext_resource type="Script" path="res://Scripts/PlayerStateMachine/JumpingPlayerState.gd" id="11_tvuup"]
-[ext_resource type="Script" path="res://Scripts/PlayerStateMachine/FallingPlayerState.gd" id="12_7padl"]
 [ext_resource type="PackedScene" uid="uid://s754mbsqopr8" path="res://Controllers/view_model.tscn" id="13_twrey"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2vig8"]
@@ -316,15 +314,72 @@ _data = {
 "Walking": SubResource("Animation_hu4l7")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_a7305"]
+[sub_resource type="GDScript" id="GDScript_em0ml"]
+script/source = "class_name CrouchingPlayerState 
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER", "CROUCH_SHAPECAST")]
+extends PlayerMovementState
+
+@export var SPEED : float = 3.0
+@export var ACCELERATION : float = 0.1
+@export var DECELERATION : float = 0.25
+@export_range(1, 6, 0.1) var CROUCH_SPEED : float = 4.0
+
+@onready var CROUCH_SHAPECAST : ShapeCast3D = %ShapeCast3D
+
+func enter() -> void:
+	ANIMATION.play(\"Crouching\", -1.0, CROUCH_SPEED)
+
+func update(delta):
+	PLAYER.UpdateGravity(delta)
+	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()
+	
+	if Input.is_action_just_released(\"crouch\"):
+		Uncrouch()
+	
+	#if Input.is_action_just_pressed(\"jump\") and PLAYER.is_on_floor():
+		#transition.emit(\"JumpingPlayerState\")
+
+func Uncrouch():
+	if CROUCH_SHAPECAST.is_colliding() == false and Input.is_action_pressed(\"crouch\") == false:
+		ANIMATION.play(\"Crouching\", -1.0, -CROUCH_SPEED * 1.5, true)
+		if ANIMATION.is_playing():
+			await ANIMATION.animation_finished
+		transition.emit(\"IdlePlayerState\")
+	
+	elif CROUCH_SHAPECAST.is_colliding() == true:
+		await get_tree().create_timer(0.1).timeout
+		Uncrouch()
+"
+
+[sub_resource type="GDScript" id="GDScript_pi5pc"]
+script/source = "class_name FallingPlayerState 
+
+extends PlayerMovementState
+
+@export var SPEED : float = 5.0
+@export var ACCELERATION : float = 0.1
+@export var DECELERATION : float = 0.25
+
+func enter() -> void:
+	ANIMATION.pause()
+
+func update(delta : float) -> void:
+	PLAYER.UpdateGravity(delta)
+	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()
+	
+	if PLAYER.is_on_floor():
+		ANIMATION.play(\"JumpEnd\")
+		transition.emit(\"IdlePlayerState\")
+"
+
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "VIEWPORT_CAMERA", "WEAPON_SUB_VIEWPORT", "ANIMATION_PLAYER")]
 script = ExtResource("1_hysve")
 CAMERA_CONTROLLER = NodePath("CameraController/MainCamera")
-VIEWPORT_CAMERA = NodePath("WeaponViewport/SubViewport/ViewModel")
+VIEWPORT_CAMERA = NodePath("WeaponViewport/SubViewport/WeaponCamera")
 WEAPON_SUB_VIEWPORT = NodePath("WeaponViewport/SubViewport")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
-CROUCH_SHAPECAST = NodePath("ShapeCast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -360,13 +415,6 @@ libraries = {
 "": SubResource("AnimationLibrary_tnlek")
 }
 blend_times = [&"JumpEnd", &"JumpStart", 0.1, &"JumpEnd", &"Walking", 0.5]
-
-[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("SphereShape3D_a7305")
-target_position = Vector3(0, 0.5, 0)
-debug_shape_custom_color = Color(0.957169, 0.702438, 0.478281, 1)
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -434,27 +482,27 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_pjkxh")
 
-[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+[node name="PlayerMovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("6_jtacy")
 CURRENT_STATE = NodePath("IdlePlayerState")
 
-[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="IdlePlayerState" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("7_m0675")
 
-[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="WalkingPlayerState" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("8_uf0xs")
 
-[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="SprintingPlayerState" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("9_sw4er")
 
-[node name="CrouchingPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("10_5btfm")
+[node name="CrouchingPlayerState" type="Node" parent="PlayerMovementStateMachine"]
+script = SubResource("GDScript_em0ml")
 
-[node name="JumpingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="JumpingPlayerState" type="Node" parent="PlayerMovementStateMachine"]
 script = ExtResource("11_tvuup")
 
-[node name="FallingPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("12_7padl")
+[node name="FallingPlayerState" type="Node" parent="PlayerMovementStateMachine"]
+script = SubResource("GDScript_pi5pc")
 
 [node name="WeaponViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -468,7 +516,7 @@ transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="ViewModel" parent="WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
+[node name="WeaponCamera" parent="WeaponViewport/SubViewport" instance=ExtResource("13_twrey")]
 cull_mask = 1047554
 
 [node name="HealthTimer" type="Timer" parent="."]

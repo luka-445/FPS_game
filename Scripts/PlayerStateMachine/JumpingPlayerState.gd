@@ -13,12 +13,14 @@ func enter() -> void:
 	ANIMATION.play("JumpStart")
 
 func update(delta):
-	PLAYER.UpdateGravity(delta)
-	# Input multiplier allows movement in air. In otherwords it gives the player the ability to control
-	# rotation while mid air. This is popular in many FPS games and is known as "Air Strafing"
-	PLAYER.UpdateInput(SPEED * INPUT_MULTIPLIER, ACCELERATION, DECELERATION)
-	PLAYER.UpdateVelocity()
-	
 	if PLAYER.is_on_floor():
 		ANIMATION.play("JumpEnd")
 		transition.emit("IdlePlayerState")
+
+func physics_update(delta):
+	PLAYER.UpdateGravity(delta)
+	# Input multiplier allows movement in air. In otherwords it gives the player the ability to 
+	# control rotation while mid air. 
+	
+	PLAYER.UpdateInput(SPEED * INPUT_MULTIPLIER, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()

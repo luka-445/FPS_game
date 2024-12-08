@@ -1,13 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://s754mbsqopr8"]
+[gd_scene load_steps=15 format=3 uid="uid://s754mbsqopr8"]
 
 [ext_resource type="Script" path="res://Scripts/Controller scripts/ViewModel.gd" id="1_rsvuw"]
-[ext_resource type="Script" path="res://Scripts/weapon scripts/WeaponsManager.gd" id="2_063mt"]
+[ext_resource type="Script" path="res://Scripts/weapon scripts/WeaponsSystem.gd" id="2_063mt"]
 [ext_resource type="Script" path="res://Assets/Weapons/Weapons.gd" id="3_valo7"]
 [ext_resource type="Resource" uid="uid://cnm5if7kitmud" path="res://Assets/Weapons/weapon resources/ak47_resource.tres" id="4_gygkn"]
 [ext_resource type="Resource" uid="uid://dsn0ehc1sawu3" path="res://Assets/Weapons/weapon resources/m9_bayonet_resource.tres" id="5_n5cgb"]
 [ext_resource type="Resource" uid="uid://cayveyfqswcij" path="res://Assets/Weapons/weapon resources/m1911_resource.tres" id="6_2iosx"]
 [ext_resource type="PackedScene" uid="uid://dloj4grhe7mft" path="res://Scenes/ak_47.tscn" id="8_xwhie"]
-[ext_resource type="PackedScene" uid="uid://cna1fk7dk8fq4" path="res://Scenes/m9_bayonet.tscn" id="9_qxykx"]
 [ext_resource type="PackedScene" uid="uid://bfx8y1io342tx" path="res://Scenes/m1911_handgun.tscn" id="10_qaff2"]
 
 [sub_resource type="Animation" id="Animation_25f52"]
@@ -15,74 +14,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AK47:position")
+tracks/0/path = NodePath("AK47:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AK47:visible")
+tracks/1/path = NodePath("m1911_handgun:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("m1911_handgun:rotation")
+tracks/2/path = NodePath("m1911_handgun:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("m1911_handgun:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("M9_bayonet:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.41888, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("M9_bayonet:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_oc8h2"]
@@ -104,34 +67,6 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("AK47:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_ugilq"]
-resource_name = "lower_knife"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("M9_bayonet:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.418879, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("M9_bayonet:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -197,34 +132,6 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_6w40v"]
-resource_name = "raise_knife"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("M9_bayonet:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.418879, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("M9_bayonet:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="Animation" id="Animation_yltbw"]
 resource_name = "raise_pistol"
 length = 0.4
@@ -257,10 +164,8 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_25f52"),
 "lower_ar": SubResource("Animation_oc8h2"),
-"lower_knife": SubResource("Animation_ugilq"),
 "lower_pistol": SubResource("Animation_f3c8e"),
 "raise_ar": SubResource("Animation_i5aba"),
-"raise_knife": SubResource("Animation_6w40v"),
 "raise_pistol": SubResource("Animation_yltbw")
 }
 
@@ -276,9 +181,6 @@ weaponResourcesAux = Array[ExtResource("3_valo7")]([ExtResource("4_gygkn"), ExtR
 startWeapons = Array[String](["AK-47", "1911", "M9 Bayonet"])
 
 [node name="AK47" parent="WeaponsManager" instance=ExtResource("8_xwhie")]
-transform = Transform3D(1, 0, 0, 0, 0.913545, 0.406737, 0, -0.406737, 0.913545, 0, 0, 0)
-
-[node name="M9_bayonet" parent="WeaponsManager" instance=ExtResource("9_qxykx")]
 transform = Transform3D(1, 0, 0, 0, 0.913545, 0.406737, 0, -0.406737, 0.913545, 0, 0, 0)
 
 [node name="m1911_handgun" parent="WeaponsManager" instance=ExtResource("10_qaff2")]

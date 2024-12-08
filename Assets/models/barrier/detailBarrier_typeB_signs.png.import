@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbksfg2sotthb"
+uid="uid://ckpn0r45eed40"
 path.s3tc="res://.godot/imported/detailBarrier_typeB_signs.png-f2d30cc8c9296a7793182ce5efe9fdad.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "a884f99fb06607d50fc77271214f9757"
 }
 
 [deps]

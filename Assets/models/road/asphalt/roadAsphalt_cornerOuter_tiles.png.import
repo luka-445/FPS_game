@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b015tlll6cqpx"
+uid="uid://uj8apk7wt23v"
 path.s3tc="res://.godot/imported/roadAsphalt_cornerOuter_tiles.png-381e38754863d2af7173eb1eebb454b7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "7e3dd8d01dadc31b68a6a2c5908cf5ee"
 }
 
 [deps]

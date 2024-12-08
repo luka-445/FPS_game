@@ -16,7 +16,7 @@ func _ready():
 	player = get_node(playerPath)
 	stateMachine = animationTree.get("parameters/playback")
 	
-func _process(delta):
+func _physics_process(delta):
 	velocity = Vector3.ZERO
 	
 	# navigation

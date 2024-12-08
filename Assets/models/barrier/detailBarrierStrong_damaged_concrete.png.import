@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2miaayfixx3v"
+uid="uid://deq7ywt6wied2"
 path.s3tc="res://.godot/imported/detailBarrierStrong_damaged_concrete.png-5997b800fd6b3c6246e0795414dad396.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "1d26b1c9dbe4c796a91722b1a76f3402"
 }
 
 [deps]

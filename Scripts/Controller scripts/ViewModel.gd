@@ -8,7 +8,7 @@ extends Camera3D
 var alpha : float = 5.0
 
 
-func _process(delta):
+func _physics_process(delta):
 	WEAPON_RIG.position.x = lerp(WEAPON_RIG.position.x, 0.0, alpha * delta)
 	WEAPON_RIG.position.y = lerp(WEAPON_RIG.position.y, 0.0, alpha * delta)
 	

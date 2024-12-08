@@ -1,3 +1,4 @@
+class_name Tier1Zombie
 extends CharacterBody3D
 
 var player = null
@@ -17,7 +18,7 @@ func _ready():
 	player = get_node(playerPath)
 	stateMachine = animationTree.get("parameters/playback")
 	
-func _process(delta):
+func _physics_process(delta):
 	velocity = Vector3.ZERO
 	
 	# navigation
@@ -27,9 +28,13 @@ func _process(delta):
 			var nextNavPoint = navAgent.get_next_path_position()
 			velocity = (nextNavPoint - global_transform.origin).normalized() * SPEED
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10)
-			look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z),
+			if player.global_transform.origin.is_equal_approx(global_transform.origin):
+				return
+				look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z),
 			 Vector3.UP)
 		"tier1_attack":
+			if player.global_transform.origin.is_equal_approx(global_transform.origin):
+				return
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
 	#conditions

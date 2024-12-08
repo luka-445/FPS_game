@@ -19,23 +19,18 @@ func exit() -> void:
 	ANIMATION.speed_scale = 1.0
 
 func update(delta) -> void:
-	PLAYER.UpdateGravity(delta)
-	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
-	PLAYER.UpdateVelocity()
-	
 	SetAnimationSpeed(PLAYER.velocity.length())
-	
-	if Input.is_action_pressed("crouch") and PLAYER.is_on_floor():
-		transition.emit("CrouchingPlayerState")
 		
 	if Input.is_action_just_released("sprint"):
 		transition.emit("WalkingPlayerState")
 	
 	if Input.is_action_just_pressed("jump") and PLAYER.is_on_floor():
 		transition.emit("JumpingPlayerState")
-	
-	if PLAYER.velocity.y > -3.0 and !PLAYER.is_on_floor():
-		transition.emit("FallingPlayerState")
+
+func physics_update(delta):
+	PLAYER.UpdateGravity(delta)
+	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()
 
 func SetAnimationSpeed(spd):
 	var alpha = remap(spd, 0.0, SPEED, 0.0, 1.0)

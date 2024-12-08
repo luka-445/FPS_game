@@ -1,3 +1,6 @@
+# This script is only meant for debugging during development and maintenance
+# not apart of the final product
+
 extends PanelContainer
 
 @onready var propertyContainer = %VBoxContainer

@@ -42,10 +42,11 @@ horizontal_alignment = 1
 [node name="Label" type="Label" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_emt28")
-text = "W, A, S, D keys to move forward, left, backward, right.
+text = "W, A, S, D keys to move forwards, left, backwards, right.
 Spacebar to jump
 Left mouse button to shoot.
-esc key to pause"
+esc key to pause
+Can you survive for 10 minutes?"
 
 [node name="Play" type="Button" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,12 +71,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0h6ik")

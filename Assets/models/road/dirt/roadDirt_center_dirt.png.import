@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ksfk1jtfhcd"
+uid="uid://dfu50wpndq1sw"
 path.s3tc="res://.godot/imported/roadDirt_center_dirt.png-10905b929f520e6a97b908c08d374966.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "f353cd0b1beb598a616ada267b27b2da"
 }
 
 [deps]

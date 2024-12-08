@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cavfxs05l3laq"
+uid="uid://bnm02ertfda7v"
 path.s3tc="res://.godot/imported/detailLight_traffic_roof.png-f321b7df4e49dddbf1d0c1365a4b56c8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "14d17904e8363c0efc09055e11359836"
 }
 
 [deps]

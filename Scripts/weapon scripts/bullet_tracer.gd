@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-var alpha = 1.0
+
 @onready var blood = $BloodSplatter
 @onready var terrain = $TerrainSplatter
 
@@ -16,11 +16,6 @@ func init(pos1, pos2):
 	draw_mesh.surface_add_vertex(pos1)
 	draw_mesh.surface_add_vertex(pos2)
 	draw_mesh.surface_end()
-
-func _process(delta):
-	if alpha > 0:
-		alpha -= delta * 2
-	material_override.albedo_color.a = alpha
 
 func triggerParticles(pos, gunPos, onEnemy):
 	if onEnemy:

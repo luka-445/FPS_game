@@ -14,18 +14,13 @@ func enter() -> void:
 		ANIMATION.pause()
 	
 func update(delta):
-	PLAYER.UpdateGravity(delta)
-	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
-	PLAYER.UpdateVelocity()
-	
-	#if Input.is_action_just_pressed("crouch") and PLAYER.is_on_floor():
-		#transition.emit("CrouchingPlayerState")
-
 	if PLAYER.velocity.length() > 0.0 and PLAYER.is_on_floor():
 		transition.emit("WalkingPlayerState")
 	
 	if Input.is_action_just_pressed("jump") and PLAYER.is_on_floor():
 		transition.emit("JumpingPlayerState")
-	
-	if PLAYER.velocity.y > -3.0 and !PLAYER.is_on_floor():
-		transition.emit("FallingPlayerState")
+
+func physics_update(delta):
+	PLAYER.UpdateGravity(delta)
+	PLAYER.UpdateInput(SPEED, ACCELERATION, DECELERATION)
+	PLAYER.UpdateVelocity()

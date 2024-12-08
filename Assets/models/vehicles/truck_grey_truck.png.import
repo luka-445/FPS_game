@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ik8sx8uhrwky"
+uid="uid://7jgx1wfuvhhs"
 path.s3tc="res://.godot/imported/truck_grey_truck.png-82260f7a37678e3c4a6593a35503e935.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "6847036c16fbcf5fb52543ffc6569dfc"
 }
 
 [deps]

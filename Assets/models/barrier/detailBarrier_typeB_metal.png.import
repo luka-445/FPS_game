@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dih8q0pg5knbn"
+uid="uid://ce11sqm1fceyl"
 path.s3tc="res://.godot/imported/detailBarrier_typeB_metal.png-dbc04a76f382abc4091ab2b37564dc62.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "a6eb2367e1d8a19643c6d974a3655325"
 }
 
 [deps]

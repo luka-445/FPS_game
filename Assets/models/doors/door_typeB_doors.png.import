@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv2c7jqdtpypy"
-path.s3tc="res://.godot/imported/door_typeB_doors.png-e2b55931b817c712afd59f52610176bd.s3tc.ctex"
+uid="uid://bconn6kujmotb"
+path.s3tc="res://.godot/imported/door_typeB_doors.png-d3a648436fe825fad6be6b3036f5f045.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "315dc0f89b210834827e6d07ca5a16d1"
-}
 
 [deps]
 
-source_file="res://Assets/models/doors/door_typeB_doors.png"
-dest_files=["res://.godot/imported/door_typeB_doors.png-e2b55931b817c712afd59f52610176bd.s3tc.ctex"]
+source_file="res://Assets/models/Doors/door_typeB_doors.png"
+dest_files=["res://.godot/imported/door_typeB_doors.png-d3a648436fe825fad6be6b3036f5f045.s3tc.ctex"]
 
 [params]
 
