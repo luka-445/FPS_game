@@ -29,6 +29,7 @@ var canTier3Spawn : bool = true
 var currentMaxTier1ZombieCount : int = 10  #30
 var currentMaxTier2ZombieCount : int = 0
 var currentMaxTier3ZombieCount : int = 0
+
 var currentTier1ZombieCount : int = 0
 var currentTier2ZombieCount : int = 0
 var currentTier3ZombieCount : int = 0

@@ -36,7 +36,7 @@ theme = ExtResource("2_emt28")
 layout_mode = 2
 theme = ExtResource("2_emt28")
 theme_type_variation = &"TitleLabel"
-text = "Game Title"
+text = "Hell on Earth"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="StartMenuContainer/PanelContainer/VBoxContainer"]
